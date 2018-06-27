@@ -16,10 +16,10 @@ include(FetchContent)
 if(NOT DEFINED slicersources_SOURCE_DIR)
   # Download Slicer sources and set variables slicersources_SOURCE_DIR and slicersources_BINARY_DIR
   FetchContent_Populate(slicersources
-	  GIT_REPOSITORY git://github.com/Slicer/Slicer
-	  GIT_TAG        efcf19444b9d79c394dc1c2d36300c5c227ac272 # 2018-03-02
-	  GIT_PROGRESS   1
-	  )
+    GIT_REPOSITORY git://github.com/Slicer/Slicer
+    GIT_TAG        efcf19444b9d79c394dc1c2d36300c5c227ac272 # 2018-03-02
+    GIT_PROGRESS   1
+    )
 else()
   set(slicersources_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/slicersources-subbuild)
 endif()

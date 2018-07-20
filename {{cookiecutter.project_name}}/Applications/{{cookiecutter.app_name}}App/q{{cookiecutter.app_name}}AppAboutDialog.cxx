@@ -18,27 +18,27 @@
 #include <QDebug>
 
 // SlicerApp includes
-#include "qAppAboutDialog.h"
+#include "q{{cookiecutter.app_name}}AppAboutDialog.h"
 #include "qSlicerApplication.h"
-#include "ui_qAppAboutDialog.h"
+#include "ui_q{{cookiecutter.app_name}}AppAboutDialog.h"
 
 //-----------------------------------------------------------------------------
-class qAppAboutDialogPrivate: public Ui_qAppAboutDialog
+class q{{cookiecutter.app_name}}AppAboutDialogPrivate: public Ui_q{{cookiecutter.app_name}}AppAboutDialog
 {
 public:
 };
 
 //-----------------------------------------------------------------------------
-// qAppAboutDialogPrivate methods
+// q{{cookiecutter.app_name}}AppAboutDialogPrivate methods
 
 
 //-----------------------------------------------------------------------------
-// qAppAboutDialog methods
-qAppAboutDialog::qAppAboutDialog(QWidget* parentWidget)
+// q{{cookiecutter.app_name}}AppAboutDialog methods
+q{{cookiecutter.app_name}}AppAboutDialog::q{{cookiecutter.app_name}}AppAboutDialog(QWidget* parentWidget)
   : QDialog(parentWidget)
-  , d_ptr(new qAppAboutDialogPrivate)
+  , d_ptr(new q{{cookiecutter.app_name}}AppAboutDialogPrivate)
 {
-  Q_D(qAppAboutDialog);
+  Q_D(q{{cookiecutter.app_name}}AppAboutDialog);
   d->setupUi(this);
   qSlicerApplication* slicer = qSlicerApplication::application();
   d->CreditsTextBrowser->setFontPointSize(25);
@@ -56,6 +56,6 @@ qAppAboutDialog::qAppAboutDialog(QWidget* parentWidget)
 }
 
 //-----------------------------------------------------------------------------
-qAppAboutDialog::~qAppAboutDialog()
+q{{cookiecutter.app_name}}AppAboutDialog::~qAppAboutDialog()
 {
 }

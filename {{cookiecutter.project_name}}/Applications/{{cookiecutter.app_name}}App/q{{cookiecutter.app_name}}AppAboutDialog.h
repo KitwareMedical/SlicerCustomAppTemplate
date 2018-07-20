@@ -15,31 +15,35 @@
 
 ==============================================================================*/
 
-#ifndef __qAppMainWindow_h
-#define __qAppMainWindow_h
+#ifndef __q{{cookiecutter.app_name}}AppAboutDialog_h
+#define __q{{cookiecutter.app_name}}AppAboutDialog_h
 
-// Slicer includes
+// Qt includes
+#include <QDialog>
+
+// CTK includes
+#include <ctkPimpl.h>
+
+// SlicerApp includes
 #include "qSlicerAppExport.h"
-#include "qSlicerAppMainWindow.h"
-class qAppMainWindowPrivate;
 
-class Q_SLICER_APP_EXPORT qAppMainWindow
-  : public qSlicerAppMainWindow
+class q{{cookiecutter.app_name}}AppAboutDialogPrivate;
+
+/// Pre-request that a q{{cookiecutter.app_name}}Application has been instanced
+class Q_SLICER_APP_EXPORT q{{cookiecutter.app_name}}AppAboutDialog
+  : public QDialog
 {
   Q_OBJECT
 public:
+  q{{cookiecutter.app_name}}AppAboutDialog(QWidget *parentWidget = 0);
+  virtual ~q{{cookiecutter.app_name}}AppAboutDialog();
 
-  typedef qSlicerAppMainWindow Superclass;
-  qAppMainWindow(QWidget *parent=0);
-  virtual ~qAppMainWindow();
-
-public:
-  /// Reimplemented to use qAppAboutDialog instead of qSlicerAppAboutDialog.
-  virtual void on_HelpAboutSlicerAppAction_triggered();
+protected:
+  QScopedPointer<q{{cookiecutter.app_name}}AppAboutDialogPrivate> d_ptr;
 
 private:
-  Q_DECLARE_PRIVATE(qAppMainWindow);
-  Q_DISABLE_COPY(qAppMainWindow);
+  Q_DECLARE_PRIVATE(q{{cookiecutter.app_name}}AppAboutDialog);
+  Q_DISABLE_COPY(q{{cookiecutter.app_name}}AppAboutDialog);
 };
 
 #endif

@@ -23,32 +23,32 @@
 #include "qSlicerModuleSelectorToolBar.h"
 
 // SlicerApp includes
-#include "qAppAboutDialog.h"
-#include "qAppMainWindow_p.h"
+#include "q{{cookiecutter.app_name}}AppAboutDialog.h"
+#include "q{{cookiecutter.app_name}}AppMainWindow_p.h"
 #include "qSlicerApplication.h"
 
 //-----------------------------------------------------------------------------
-// qAppMainWindowPrivate methods
+// q{{cookiecutter.app_name}}AppMainWindowPrivate methods
 
-qAppMainWindowPrivate::qAppMainWindowPrivate(qAppMainWindow& object)
+q{{cookiecutter.app_name}}AppMainWindowPrivate::q{{cookiecutter.app_name}}AppMainWindowPrivate(q{{cookiecutter.app_name}}AppMainWindow& object)
   : Superclass(object)
 {
 }
 
 //-----------------------------------------------------------------------------
-qAppMainWindowPrivate::~qAppMainWindowPrivate()
+q{{cookiecutter.app_name}}AppMainWindowPrivate::~q{{cookiecutter.app_name}}AppMainWindowPrivate()
 {
 }
 
 //-----------------------------------------------------------------------------
-void qAppMainWindowPrivate::init()
+void q{{cookiecutter.app_name}}AppMainWindowPrivate::init()
 {
-  Q_Q(qAppMainWindow);
+  Q_Q(q{{cookiecutter.app_name}}AppMainWindow);
   this->Superclass::init();
 }
 
 //-----------------------------------------------------------------------------
-void qAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
+void q{{cookiecutter.app_name}}AppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
 {
   this->Superclass::setupUi(mainWindow);
 
@@ -60,7 +60,7 @@ void qAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
 
   QPixmap logo(":/LogoFull.png");
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
-  qreal dpr = sqrt(qApp->desktop()->logicalDpiX()*qreal(qApp->desktop()->logicalDpiY()) / (qApp->desktop()->physicalDpiX()*qApp->desktop()->physicalDpiY()));
+  qreal dpr = sqrt(q{{cookiecutter.app_name}}App->desktop()->logicalDpiX()*qreal(q{{cookiecutter.app_name}}App->desktop()->logicalDpiY()) / (q{{cookiecutter.app_name}}App->desktop()->physicalDpiX()*q{{cookiecutter.app_name}}App->desktop()->physicalDpiY()));
   logo.setDevicePixelRatio(dpr);
 #endif
   this->LogoLabel->setPixmap(logo);
@@ -91,24 +91,24 @@ void qAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
 }
 
 //-----------------------------------------------------------------------------
-// qAppMainWindow methods
+// q{{cookiecutter.app_name}}AppMainWindow methods
 
 //-----------------------------------------------------------------------------
-qAppMainWindow::qAppMainWindow(QWidget* windowParent)
-  : Superclass(new qAppMainWindowPrivate(*this), windowParent)
+q{{cookiecutter.app_name}}AppMainWindow::q{{cookiecutter.app_name}}AppMainWindow(QWidget* windowParent)
+  : Superclass(new q{{cookiecutter.app_name}}AppMainWindowPrivate(*this), windowParent)
 {
-  Q_D(qAppMainWindow);
+  Q_D(q{{cookiecutter.app_name}}AppMainWindow);
   d->init();
 }
 
 //-----------------------------------------------------------------------------
-qAppMainWindow::~qAppMainWindow()
+q{{cookiecutter.app_name}}AppMainWindow::~q{{cookiecutter.app_name}}AppMainWindow()
 {
 }
 
 //-----------------------------------------------------------------------------
-void qAppMainWindow::on_HelpAboutSlicerAppAction_triggered()
+void q{{cookiecutter.app_name}}AppMainWindow::on_HelpAboutSlicerAppAction_triggered()
 {
-  qAppAboutDialog about(this);
+  q{{cookiecutter.app_name}}AppAboutDialog about(this);
   about.exec();
 }

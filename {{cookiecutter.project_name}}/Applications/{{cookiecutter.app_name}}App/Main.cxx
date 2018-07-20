@@ -20,7 +20,7 @@
 #include "qSlicerApplicationHelper.h"
 
 // SlicerApp includes
-#include "qAppMainWindow.h"
+#include "q{{cookiecutter.app_name}}AppMainWindow.h"
 #include "Widgets/qAppStyle.h"
 
 namespace
@@ -29,7 +29,7 @@ namespace
 //----------------------------------------------------------------------------
 int SlicerAppMain(int argc, char* argv[])
 {
-  typedef qAppMainWindow SlicerMainWindowType;
+  typedef q{{cookiecutter.app_name}}AppMainWindow SlicerMainWindowType;
 
   qSlicerApplicationHelper::preInitializeApplication(argv[0], new qAppStyle);
 

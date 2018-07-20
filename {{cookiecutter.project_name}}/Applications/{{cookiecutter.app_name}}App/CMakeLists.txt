@@ -79,10 +79,10 @@ set(${PROJECT_NAME}_FOLDER "App-${PROJECT_NAME}")
 set(APPLIB_NAME "q${PROJECT_NAME}")
 
 set(APPLIB_SRCS
-  qAppAboutDialog.cxx
-  qAppAboutDialog.h
-  qAppMainWindow.cxx
-  qAppMainWindow.h
+  q{{cookiecutter.app_name}}AppAboutDialog.cxx
+  q{{cookiecutter.app_name}}AppAboutDialog.h
+  q{{cookiecutter.app_name}}AppMainWindow.cxx
+  q{{cookiecutter.app_name}}AppMainWindow.h
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppAboutDialog.cxx
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppAboutDialog.h
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppErrorReportDialog.cxx
@@ -95,8 +95,8 @@ set(APPLIB_SRCS
   )
 
 set(APPLIB_MOC_SRCS
-  qAppAboutDialog.h
-  qAppMainWindow.h
+  q{{cookiecutter.app_name}}AppAboutDialog.h
+  q{{cookiecutter.app_name}}AppMainWindow.h
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppAboutDialog.h
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppErrorReportDialog.h
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppMainWindow.h
@@ -104,7 +104,7 @@ set(APPLIB_MOC_SRCS
   )
 
 set(APPLIB_UI_SRCS
-  Resources/UI/qAppAboutDialog.ui
+  Resources/UI/q{{cookiecutter.app_name}}AppAboutDialog.ui
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/UI/qSlicerAppAboutDialog.ui
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/UI/qSlicerAppErrorReportDialog.ui
   ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/UI/qSlicerAppMainWindow.ui

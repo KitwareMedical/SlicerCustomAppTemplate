@@ -15,22 +15,22 @@
 
 ==============================================================================*/
 
-#ifndef __qAppMainWindow_p_h
-#define __qAppMainWindow_p_h
+#ifndef __q{{cookiecutter.app_name}}AppMainWindow_p_h
+#define __q{{cookiecutter.app_name}}AppMainWindow_p_h
 
 // SlicerApp includes
-#include "qAppMainWindow.h"
+#include "q{{cookiecutter.app_name}}AppMainWindow.h"
 #include "qSlicerAppMainWindow_p.h"
 
 //-----------------------------------------------------------------------------
-class Q_SLICER_APP_EXPORT qAppMainWindowPrivate
+class Q_SLICER_APP_EXPORT q{{cookiecutter.app_name}}AppMainWindowPrivate
   : public qSlicerAppMainWindowPrivate
 {
-  Q_DECLARE_PUBLIC(qAppMainWindow);
+  Q_DECLARE_PUBLIC(q{{cookiecutter.app_name}}AppMainWindow);
 public:
   typedef qSlicerAppMainWindowPrivate Superclass;
-  qAppMainWindowPrivate(qAppMainWindow& object);
-  virtual ~qAppMainWindowPrivate();
+  q{{cookiecutter.app_name}}AppMainWindowPrivate(q{{cookiecutter.app_name}}AppMainWindow& object);
+  virtual ~q{{cookiecutter.app_name}}AppMainWindowPrivate();
 
   virtual void init();
   /// Reimplemented for custom behavior

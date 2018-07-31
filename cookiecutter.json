@@ -1,6 +1,7 @@
 {
   "project_name": "SlicerCustomAppTemplate",
-  "github_org": "Kitware",
+  "github_organization": "Kitware",
+  "github_project": "{{ cookiecutter.project_name }}",
   "org_domain" : "kitware.com",
   "org_name" : "Kitware, Inc.",
   "app_name" : "{{ cookiecutter.project_name }}",

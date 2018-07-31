@@ -18,11 +18,13 @@
 #ifndef __qAppStyle_h
 #define __qAppStyle_h
 
+// {{cookiecutter.app_name}} includes
+#include "q{{cookiecutter.app_name}}AppExport.h"
+
 // Slicer includes
-#include "qSlicerAppExport.h"
 #include "qSlicerStyle.h"
 
-class Q_SLICER_APP_EXPORT qAppStyle
+class Q_{{cookiecutter.app_name|upper}}_APP_EXPORT qAppStyle
   : public qSlicerStyle
 {
   Q_OBJECT

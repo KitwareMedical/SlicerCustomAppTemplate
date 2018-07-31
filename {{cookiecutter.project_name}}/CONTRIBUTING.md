@@ -28,7 +28,7 @@ and will facilitate other developers to checkout your topic without having to
 [configure a remote](https://help.github.com/articles/configuring-a-remote-for-a-fork/).
 It will also simplify the workflow when you are _co-developing_ a branch.
 
-When submitting a PR, make sure to add a `Cc: @{{cookiecutter.project_name}}/developers` comment to
+When submitting a PR, make sure to add a `Cc: @{{cookiecutter.github_project}}/developers` comment to
 notify {{cookiecutter.project_name}} developers of your awesome contributions. Based on the
 comments posted by the reviewers, you may have to revisit your patches.
 
@@ -51,5 +51,5 @@ Then, click on the "Delete branch" button that appears afterward.
 
 [fk]: http://help.github.com/forking/
 [push]: https://help.github.com/articles/pushing-to-a-remote/
-[pr]: https://github.com/{{cookiecutter.github_org}}/{{cookiecutter.project_name}}/merge_requests
-[is]: https://github.com/{{cookiecutter.github_org}}/{{cookiecutter.project_name}}/issues
+[pr]: https://github.com/{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}/merge_requests
+[is]: https://github.com/{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}/issues

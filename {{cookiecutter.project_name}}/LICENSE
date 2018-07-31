@@ -1,4 +1,4 @@
-SlicerCustom
+{{cookiecutter.project_name}}
 ------------
 
 Copyright (c) {{cookiecutter.org_name}}

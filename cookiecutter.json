@@ -1,6 +1,12 @@
 {
   "project_name": "SlicerCustomAppTemplate",
-  "github_org": "Kitware",
+  "github_organization": "Kitware",
+  "github_project": "{{ cookiecutter.project_name }}",
   "org_domain" : "kitware.com",
-  "org_name" : "Kitware, Inc."
+  "org_name" : "Kitware, Inc.",
+  "app_name" : "{{ cookiecutter.project_name }}",
+  "app_version_major": "0",
+  "app_version_minor": "1",
+  "app_version_patch": "0",
+  "app_description_summary": "Customized version of Slicer"
 }

@@ -36,51 +36,22 @@ set(${PROJECT_NAME}_FOLDER "App-${PROJECT_NAME}")
 set(APPLIB_NAME "q${PROJECT_NAME}")
 
 set(APPLIB_SRCS
-  q{{cookiecutter.app_name}}AppAboutDialog.cxx
-  q{{cookiecutter.app_name}}AppAboutDialog.h
   q{{cookiecutter.app_name}}AppMainWindow.cxx
   q{{cookiecutter.app_name}}AppMainWindow.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppAboutDialog.cxx
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppAboutDialog.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppErrorReportDialog.cxx
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppErrorReportDialog.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppMainWindow.cxx
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppMainWindow.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppMainWindow_p.h
   Widgets/qAppStyle.cxx
   Widgets/qAppStyle.h
   )
 
 set(APPLIB_MOC_SRCS
-  q{{cookiecutter.app_name}}AppAboutDialog.h
   q{{cookiecutter.app_name}}AppMainWindow.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppAboutDialog.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppErrorReportDialog.h
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/qSlicerAppMainWindow.h
   Widgets/qAppStyle.h
   )
 
 set(APPLIB_UI_SRCS
-  Resources/UI/q{{cookiecutter.app_name}}AppAboutDialog.ui
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/UI/qSlicerAppAboutDialog.ui
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/UI/qSlicerAppErrorReportDialog.ui
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/UI/qSlicerAppMainWindow.ui
   )
 
 set(APPLIB_RESOURCES
   Resources/App.qrc
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp/Resources/SlicerApp.qrc
-  ${qSlicerBaseQTGUI_SOURCE_DIR}/Resources/qSlicerBaseQTGUI.qrc
-  )
-
-set(APPLIB_INCLUDE_DIRECTORIES
-  ${Slicer_SOURCE_DIR}/Applications/SlicerApp
-  ${Slicer_BINARY_DIR}/Applications/SlicerApp
-  )
-
-configure_file(
-  qSlicerAppExport.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/qSlicerAppExport.h
   )
 
 slicerMacroBuildAppLibrary(
@@ -88,12 +59,11 @@ slicerMacroBuildAppLibrary(
   DESCRIPTION_SUMMARY ${${PROJECT_NAME}_DESCRIPTION_SUMMARY}
   DESCRIPTION_FILE ${${PROJECT_NAME}_DESCRIPTION_FILE}
   APPLICATION_NAME ${${PROJECT_NAME}_APPLICATION_NAME}
-  EXPORT_DIRECTIVE "Q_SLICER_APP_EXPORT"
+  EXPORT_DIRECTIVE "Q_{{cookiecutter.app_name|upper}}_APP_EXPORT"
   FOLDER ${${PROJECT_NAME}_FOLDER}
   SRCS ${APPLIB_SRCS}
   MOC_SRCS ${APPLIB_MOC_SRCS}
   UI_SRCS ${APPLIB_UI_SRCS}
-  INCLUDE_DIRECTORIES ${APPLIB_INCLUDE_DIRECTORIES}
   RESOURCES ${APPLIB_RESOURCES}
   )
 
@@ -126,4 +96,3 @@ slicerMacroBuildApplication(
   TARGET_NAME_VAR "APP_TARGET_NAME"
   ${extra_args}
   )
-

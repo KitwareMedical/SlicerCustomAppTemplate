@@ -1,7 +1,9 @@
-{{cookiecutter.project_name}} by Kitware, Inc.
+{{cookiecutter.project_name}} by {{cookiecutter.org_name}}
 ================================
 
-![{{cookiecutter.project_name}} by Kitware, Inc.](Applications/App/Resources/Images/LogoFull.png?raw=true)
+{{cookiecutter.app_description_summary}}
+
+![{{cookiecutter.project_name}} by {{cookiecutter.org_name}}](Applications/App/Resources/Images/LogoFull.png?raw=true)
 
 Prerequisites
 -------------

@@ -18,24 +18,27 @@
 #ifndef __q{{cookiecutter.app_name}}AppMainWindow_h
 #define __q{{cookiecutter.app_name}}AppMainWindow_h
 
-// Slicer includes
-#include "qSlicerAppExport.h"
-#include "qSlicerAppMainWindow.h"
+// {{cookiecutter.app_name}} includes
+#include "q{{cookiecutter.app_name}}AppExport.h"
 class q{{cookiecutter.app_name}}AppMainWindowPrivate;
 
-class Q_SLICER_APP_EXPORT q{{cookiecutter.app_name}}AppMainWindow
-  : public qSlicerAppMainWindow
+// Slicer includes
+#include "qSlicerMainWindow.h"
+
+class Q_{{cookiecutter.app_name|upper}}_APP_EXPORT q{{cookiecutter.app_name}}AppMainWindow : public qSlicerMainWindow
 {
   Q_OBJECT
 public:
+  typedef qSlicerMainWindow Superclass;
 
-  typedef qSlicerAppMainWindow Superclass;
   q{{cookiecutter.app_name}}AppMainWindow(QWidget *parent=0);
   virtual ~q{{cookiecutter.app_name}}AppMainWindow();
 
-public:
-  /// Reimplemented to use q{{cookiecutter.app_name}}AppAboutDialog instead of qSlicerAppAboutDialog.
-  virtual void on_HelpAboutSlicerAppAction_triggered();
+public slots:
+  void on_HelpAbout{{cookiecutter.app_name}}AppAction_triggered();
+
+protected:
+  q{{cookiecutter.app_name}}AppMainWindow(q{{cookiecutter.app_name}}AppMainWindowPrivate* pimpl, QWidget* parent);
 
 private:
   Q_DECLARE_PRIVATE(q{{cookiecutter.app_name}}AppMainWindow);

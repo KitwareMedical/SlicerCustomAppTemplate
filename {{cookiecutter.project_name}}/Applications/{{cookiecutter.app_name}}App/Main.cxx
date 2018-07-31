@@ -15,13 +15,13 @@
 
 ==============================================================================*/
 
+// {{cookiecutter.app_name}} includes
+#include "q{{cookiecutter.app_name}}AppMainWindow.h"
+#include "Widgets/qAppStyle.h"
+
 // Slicer includes
 #include "qSlicerApplication.h"
 #include "qSlicerApplicationHelper.h"
-
-// SlicerApp includes
-#include "q{{cookiecutter.app_name}}AppMainWindow.h"
-#include "Widgets/qAppStyle.h"
 
 namespace
 {
@@ -47,7 +47,7 @@ int SlicerAppMain(int argc, char* argv[])
 
   if (!window.isNull())
     {
-    QString windowTitle = QString("%1 %2").arg(Slicer_MAIN_PROJECT_APPLICATION_NAME).arg(Slicer_VERSION);
+    QString windowTitle = QString("%1 %2").arg(Slicer_MAIN_PROJECT_APPLICATION_NAME).arg(Slicer_MAIN_PROJECT_VERSION_FULL);
     window->setWindowTitle(windowTitle);
     }
 

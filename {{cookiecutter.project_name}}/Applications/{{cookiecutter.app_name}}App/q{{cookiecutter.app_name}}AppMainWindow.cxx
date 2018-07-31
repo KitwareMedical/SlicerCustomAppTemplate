@@ -15,17 +15,18 @@
 
 ==============================================================================*/
 
+// {{cookiecutter.app_name}} includes
+#include "q{{cookiecutter.app_name}}AppMainWindow.h"
+#include "q{{cookiecutter.app_name}}AppMainWindow_p.h"
+
 // Qt includes
-#include <QDebug>
 #include <QDesktopWidget>
 
 // Slicer includes
-#include "qSlicerModuleSelectorToolBar.h"
-
-// SlicerApp includes
-#include "q{{cookiecutter.app_name}}AppAboutDialog.h"
-#include "q{{cookiecutter.app_name}}AppMainWindow_p.h"
 #include "qSlicerApplication.h"
+#include "qSlicerAboutDialog.h"
+#include "qSlicerMainWindow_p.h"
+#include "qSlicerModuleSelectorToolBar.h"
 
 //-----------------------------------------------------------------------------
 // q{{cookiecutter.app_name}}AppMainWindowPrivate methods
@@ -50,17 +51,29 @@ void q{{cookiecutter.app_name}}AppMainWindowPrivate::init()
 //-----------------------------------------------------------------------------
 void q{{cookiecutter.app_name}}AppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
 {
-  this->Superclass::setupUi(mainWindow);
-
   qSlicerApplication * app = qSlicerApplication::application();
 
-  mainWindow->setWindowTitle(app->applicationName());
-  this->HelpAboutSlicerAppAction->setText("About " + app->applicationName());
-  this->HelpAboutSlicerAppAction->setToolTip("");
+  //----------------------------------------------------------------------------
+  // Add actions
+  //----------------------------------------------------------------------------
+  QAction* helpAboutSlicerAppAction = new QAction(mainWindow);
+  helpAboutSlicerAppAction->setObjectName("HelpAbout{{cookiecutter.app_name}}AppAction");
+  helpAboutSlicerAppAction->setText("About " + app->applicationName());
+
+  //----------------------------------------------------------------------------
+  // Calling "setupUi()" after adding the actions above allows the call
+  // to "QMetaObject::connectSlotsByName()" done in "setupUi()" to
+  // successfully connect each slot with its corresponding action.
+  this->Superclass::setupUi(mainWindow);
+
+  //----------------------------------------------------------------------------
+  // Configure
+  //----------------------------------------------------------------------------
+  mainWindow->setWindowIcon(QIcon(":/Icons/Medium/DesktopIcon.png"));
 
   QPixmap logo(":/LogoFull.png");
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
-  qreal dpr = sqrt(q{{cookiecutter.app_name}}App->desktop()->logicalDpiX()*qreal(q{{cookiecutter.app_name}}App->desktop()->logicalDpiY()) / (q{{cookiecutter.app_name}}App->desktop()->physicalDpiX()*q{{cookiecutter.app_name}}App->desktop()->physicalDpiY()));
+  qreal dpr = sqrt(qApp->desktop()->logicalDpiX()*qreal(qApp->desktop()->logicalDpiY()) / (qApp->desktop()->physicalDpiX()*qApp->desktop()->physicalDpiY()));
   logo.setDevicePixelRatio(dpr);
 #endif
   this->LogoLabel->setPixmap(logo);
@@ -102,13 +115,22 @@ q{{cookiecutter.app_name}}AppMainWindow::q{{cookiecutter.app_name}}AppMainWindow
 }
 
 //-----------------------------------------------------------------------------
+q{{cookiecutter.app_name}}AppMainWindow::q{{cookiecutter.app_name}}AppMainWindow(
+  q{{cookiecutter.app_name}}AppMainWindowPrivate* pimpl, QWidget* windowParent)
+  : Superclass(pimpl, windowParent)
+{
+  // init() is called by derived class.
+}
+
+//-----------------------------------------------------------------------------
 q{{cookiecutter.app_name}}AppMainWindow::~q{{cookiecutter.app_name}}AppMainWindow()
 {
 }
 
 //-----------------------------------------------------------------------------
-void q{{cookiecutter.app_name}}AppMainWindow::on_HelpAboutSlicerAppAction_triggered()
+void q{{cookiecutter.app_name}}AppMainWindow::on_HelpAbout{{cookiecutter.app_name}}AppAction_triggered()
 {
-  q{{cookiecutter.app_name}}AppAboutDialog about(this);
+  qSlicerAboutDialog about(this);
+  about.setLogo(QPixmap(":/Logo.png"));
   about.exec();
 }

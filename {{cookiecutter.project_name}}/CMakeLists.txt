@@ -111,14 +111,19 @@ set(Slicer_EXTENSION_SOURCE_DIRS
   )
 
 # Add remote extension source directories
-include(ExternalProjectAddSource)
 
-# Slicer_Remote_Add(AwesomeModuleOrExtension
-#  GIT_REPOSITORY ${EP_GIT_PROTOCOL}://github.com/Foo/AwesomeModuleOrExtension.git
-#  GIT_TAG "9e2e199b99396c570f5f26c0ccfd5e149f6b9d34"
-#  LABELS REMOTE_MODULE
+# SlicerOpenIGTLink
+#set(extension_name "SlicerOpenIGTLink")
+#set(${extension_name}_SOURCE_DIR "${CMAKE_BINARY_DIR}/${extension_name}")
+#FetchContent_Populate(${extension_name}
+#  SOURCE_DIR     ${${extension_name}_SOURCE_DIR}
+#  GIT_REPOSITORY ${EP_GIT_PROTOCOL}://github.com/openigtlink/SlicerOpenIGTLink.git
+#  GIT_TAG        2b92f7b1ffe02403109b671f28424e8770e902a0
+#  GIT_PROGRESS   1
+#  QUIET
 #  )
-# list(APPEND Slicer_REMOTE_DEPENDENCIES Foo)
+#list(APPEND Slicer_EXTENSION_SOURCE_DIRS ${${extension_name}_SOURCE_DIR})
+
 
 # Add Slicer sources
 add_subdirectory(${slicersources_SOURCE_DIR} ${slicersources_BINARY_DIR})

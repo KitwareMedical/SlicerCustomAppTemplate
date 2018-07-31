@@ -16,56 +16,14 @@
 #
 #============================================================================
 
-set(APPLICATION_NAME ${Slicer_MAIN_PROJECT_APPLICATION_NAME})
-project(${APPLICATION_NAME}App)
+project({{cookiecutter.app_name}}App)
 
 include(SlicerMacroBuildApplication)
 
 # --------------------------------------------------------------------------
-# Slicer supports more than one application (i.e. an application
-# "OtherApp" in addition to "APPLICATION_NAMEApp").
-#
-# In that specific case, it is required to differentiate the two applications
-# and specify which one should be considered as the *Main* one.
-#
-# This is usually done within the top level CMakeLists.txt file by setting the variable
-# Slicer_MAIN_PROJECT.
-#
-# Within the Applications/OtherApp/CMakeLists.txt of the secondary application,
-# the project name should be updated, the variable 'SlicerApp_APPLICATION_NAME'
-# could also be optionnally set to a custom value.
-#
-
-if(${PROJECT_NAME} STREQUAL ${Slicer_MAIN_PROJECT})
-  set(SlicerApp_APPLICATION_NAME ${APPLICATION_NAME})
-endif()
-
+# Properties
 # --------------------------------------------------------------------------
-# Metadata
-# --------------------------------------------------------------------------
-
-set(APPLIB_DESCRIPTION_SUMMARY
-  "Customized version of Slicer"
-  )
-set(APPLIB_DESCRIPTION_FILE
-  ${Slicer_SOURCE_DIR}/README.txt
-  )
-
-set(APP_LAUNCHER_SPLASHSCREEN_FILE
-  "Resources/Images/SplashScreen.png"
-  )
-
-set(APP_APPLE_ICON_FILE
-  "Resources/Icons/XLarge/DesktopIcon.icns"
-  )
-
-set(APP_WIN_ICON_FILE
-  "Resources/App.ico"
-  )
-
-set(APP_LICENSE_FILE
-  "${Slicer_SOURCE_DIR}/License.txt"
-  )
+SlicerReadApplicationProperties()
 
 # --------------------------------------------------------------------------
 # Folder
@@ -75,7 +33,6 @@ set(${PROJECT_NAME}_FOLDER "App-${PROJECT_NAME}")
 # --------------------------------------------------------------------------
 # Application library
 # --------------------------------------------------------------------------
-
 set(APPLIB_NAME "q${PROJECT_NAME}")
 
 set(APPLIB_SRCS
@@ -128,9 +85,9 @@ configure_file(
 
 slicerMacroBuildAppLibrary(
   NAME ${APPLIB_NAME}
-  DESCRIPTION_SUMMARY ${APPLIB_DESCRIPTION_SUMMARY}
-  DESCRIPTION_FILE ${APPLIB_DESCRIPTION_FILE}
-  APPLICATION_NAME ${SlicerApp_APPLICATION_NAME}
+  DESCRIPTION_SUMMARY ${${PROJECT_NAME}_DESCRIPTION_SUMMARY}
+  DESCRIPTION_FILE ${${PROJECT_NAME}_DESCRIPTION_FILE}
+  APPLICATION_NAME ${${PROJECT_NAME}_APPLICATION_NAME}
   EXPORT_DIRECTIVE "Q_SLICER_APP_EXPORT"
   FOLDER ${${PROJECT_NAME}_FOLDER}
   SRCS ${APPLIB_SRCS}
@@ -159,10 +116,10 @@ set(APP_TARGET_LIBRARIES ${APPLIB_NAME})
 slicerMacroBuildApplication(
   NAME ${PROJECT_NAME}
   APPLICATION_NAME ${${PROJECT_NAME}_APPLICATION_NAME}
-  LAUNCHER_SPLASHSCREEN_FILE ${APP_LAUNCHER_SPLASHSCREEN_FILE}
-  APPLE_ICON_FILE ${APP_APPLE_ICON_FILE}
-  WIN_ICON_FILE ${APP_WIN_ICON_FILE}
-  LICENSE_FILE ${APP_LICENSE_FILE}
+  LAUNCHER_SPLASHSCREEN_FILE ${${PROJECT_NAME}_LAUNCHER_SPLASHSCREEN_FILE}
+  APPLE_ICON_FILE ${${PROJECT_NAME}_APPLE_ICON_FILE}
+  WIN_ICON_FILE ${${PROJECT_NAME}_WIN_ICON_FILE}
+  LICENSE_FILE ${${PROJECT_NAME}_LICENSE_FILE}
   FOLDER ${${PROJECT_NAME}_FOLDER}
   SRCS ${APP_SRCS}
   TARGET_LIBRARIES ${APP_TARGET_LIBRARIES}

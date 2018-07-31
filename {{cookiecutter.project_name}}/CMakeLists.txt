@@ -11,13 +11,15 @@ endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+project({{cookiecutter.project_name}})
+
 # Slicer sources
 include(FetchContent)
 if(NOT DEFINED slicersources_SOURCE_DIR)
   # Download Slicer sources and set variables slicersources_SOURCE_DIR and slicersources_BINARY_DIR
   FetchContent_Populate(slicersources
     GIT_REPOSITORY git://github.com/Slicer/Slicer
-    GIT_TAG        efcf19444b9d79c394dc1c2d36300c5c227ac272 # 2018-03-02
+    GIT_TAG        8af26f65267f2b316eeee78035c22f835d485abf # 2018-08-31
     GIT_PROGRESS   1
     )
 else()
@@ -27,21 +29,13 @@ endif()
 set(CMAKE_MODULE_PATH ${slicersources_SOURCE_DIR}/CMake ${CMAKE_MODULE_PATH})
 include(SlicerInitializeOSXVariables)
 
-# Set application metadata
-set(APPLICATION_NAME           "{{cookiecutter.project_name}}")
-set(Slicer_VERSION_MAJOR       "0")
-set(Slicer_VERSION_MINOR       "1")
-set(Slicer_VERSION_PATCH       "0")
-project(${APPLICATION_NAME} VERSION "${Slicer_VERSION_MAJOR}.${Slicer_VERSION_MINOR}.${Slicer_VERSION_PATCH}")
+# Configure Application
+set(Slicer_APPLICATIONS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Applications)
+set(Slicer_MAIN_PROJECT "{{cookiecutter.app_name}}App")
 
 # Set organization
 set(Slicer_ORGANIZATION_DOMAIN "{{cookiecutter.org_domain}}")
 set(Slicer_ORGANIZATION_NAME   "{{cookiecutter.org_name}}")
-
-# Configure Application
-set(Slicer_APPLICATIONS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Applications)
-set(Slicer_MAIN_PROJECT ${APPLICATION_NAME}App)
-set(${Slicer_MAIN_PROJECT}_APPLICATION_NAME ${APPLICATION_NAME})
 
 # Default home and favorite modules
 set(Slicer_DEFAULT_HOME_MODULE "Home")

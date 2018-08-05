@@ -18,7 +18,7 @@ Getting Started
 
 The following will get a custom 3D Slicer application started in a new repository::
 
-  pip install cookiecutter
+  pip install cookiecutter jinja2-github
   cookiecutter gh:KitwareMedical/SlicerCustomAppTemplate
   # Fill in the information requested at the prompts
 

@@ -8,5 +8,6 @@
   "app_version_major": "0",
   "app_version_minor": "1",
   "app_version_patch": "0",
-  "app_description_summary": "Customized version of Slicer"
+  "app_description_summary": "Customized version of Slicer",
+  "_extensions": ["jinja2_github.GitHubRepoBranchShaExtension"]
 }

@@ -44,6 +44,9 @@ q{{cookiecutter.app_name}}AppMainWindowPrivate::~q{{cookiecutter.app_name}}AppMa
 //-----------------------------------------------------------------------------
 void q{{cookiecutter.app_name}}AppMainWindowPrivate::init()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
   Q_Q(q{{cookiecutter.app_name}}AppMainWindow);
   this->Superclass::init();
 }
@@ -72,10 +75,7 @@ void q{{cookiecutter.app_name}}AppMainWindowPrivate::setupUi(QMainWindow * mainW
   mainWindow->setWindowIcon(QIcon(":/Icons/Medium/DesktopIcon.png"));
 
   QPixmap logo(":/LogoFull.png");
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
-  qreal dpr = sqrt(qApp->desktop()->logicalDpiX()*qreal(qApp->desktop()->logicalDpiY()) / (qApp->desktop()->physicalDpiX()*qApp->desktop()->physicalDpiY()));
   logo.setDevicePixelRatio(dpr);
-#endif
   this->LogoLabel->setPixmap(logo);
 
   // Hide the toolbars

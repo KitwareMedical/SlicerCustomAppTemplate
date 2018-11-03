@@ -29,11 +29,11 @@
 // CTK includes
 #include <ctkCollapsibleButton.h>
 
-// qMRML includes
+// {{cookiecutter.app_name}} includes
 #include "qAppStyle.h"
 
 // --------------------------------------------------------------------------
-// qSlicerStyle methods
+// qAppStyle methods
 
 // --------------------------------------------------------------------------
 qAppStyle::qAppStyle()

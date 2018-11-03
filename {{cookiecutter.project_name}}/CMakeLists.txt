@@ -47,6 +47,10 @@ set(SUPERBUILD_TOPLEVEL_PROJECT Slicer)
 set(EXTERNAL_PROJECT_ADDITIONAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SuperBuild")
 include(ExternalProjectDependency)
 
+# Additional Slicer dependencies looked up in EXTERNAL_PROJECT_ADDITIONAL_DIR
+set(Slicer_ADDITIONAL_DEPENDENCIES
+  )
+
 if(NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_DEFAULT_BUILD_TYPE "Release")
 endif()

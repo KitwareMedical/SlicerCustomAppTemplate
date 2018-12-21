@@ -94,5 +94,6 @@ slicerMacroBuildApplication(
   SRCS ${APP_SRCS}
   TARGET_LIBRARIES ${APP_TARGET_LIBRARIES}
   TARGET_NAME_VAR "APP_TARGET_NAME"
+  DEFAULT_SETTINGS_FILE Resources/Settings/DefaultSettings.ini
   ${extra_args}
   )

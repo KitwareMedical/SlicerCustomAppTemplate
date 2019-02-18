@@ -27,7 +27,7 @@ set(APPLE_ICON_FILE
   "${CMAKE_CURRENT_LIST_DIR}/Resources/Icons/DesktopIcon.icns"
   )
 set(WIN_ICON_FILE
-  "${CMAKE_CURRENT_LIST_DIR}/Resources/App.ico"
+  "${CMAKE_CURRENT_LIST_DIR}/Resources/Icons/DesktopIcon.ico"
   )
 
 set(LICENSE_FILE

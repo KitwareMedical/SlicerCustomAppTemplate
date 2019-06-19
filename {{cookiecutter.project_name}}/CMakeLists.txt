@@ -57,12 +57,16 @@ include(SlicerInitializeReleaseType)
 if(WIN32)
   set(Slicer_CPACK_NSIS_INSTALL_REQUIRES_ADMIN_ACCOUNT ON)
   if(Slicer_CPACK_NSIS_INSTALL_REQUIRES_ADMIN_ACCOUNT)
+    # User has administrative privileges, therefore we can install to shared folder
+    # "C:\Program Files" or "C:\Program Files (x86)".
     if(CMAKE_CL_64)
       set(Slicer_CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
     else()
       set(Slicer_CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES")
     endif()
   else()
+    # We do not require administrative privileges, therefore we install to user folder
+    # "C:\Users\<username>\AppData\Local".
     set(Slicer_CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA\\\\${Slicer_ORGANIZATION_NAME}")
   endif()
 endif()

@@ -53,6 +53,20 @@ endif()
 include(SlicerInitializeBuildType)
 include(SlicerInitializeReleaseType)
 
+# Installation folder and admin account requirement for Windows
+if(WIN32)
+  set(Slicer_CPACK_NSIS_INSTALL_REQUIRES_ADMIN_ACCOUNT ON)
+  if(Slicer_CPACK_NSIS_INSTALL_REQUIRES_ADMIN_ACCOUNT)
+    if(CMAKE_CL_64)
+      set(Slicer_CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
+    else()
+      set(Slicer_CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES")
+    endif()
+  else()
+    set(Slicer_CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA\\\\${Slicer_ORGANIZATION_NAME}")
+  endif()
+endif()
+
 # Slicer options
 option(BUILD_TESTING                            "Build application test suite"                        ON)
 option(Slicer_BUILD_DOCUMENTATION               "Build documentation (Doxygen, sphinx, ...)"          OFF)

@@ -55,6 +55,8 @@ include(SlicerInitializeReleaseType)
 
 # Installation folder and admin account requirement for Windows
 if(WIN32)
+  # Note: To avoid escaping issue, make sure to use forward slash when setting
+  #       "Slicer_CPACK_NSIS_INSTALL_ROOT". It is replaced by "\\\\" in SlicerCPack.
   set(Slicer_CPACK_NSIS_INSTALL_REQUIRES_ADMIN_ACCOUNT ON)
   if(Slicer_CPACK_NSIS_INSTALL_REQUIRES_ADMIN_ACCOUNT)
     # User has administrative privileges, therefore we can install to shared folder
@@ -67,7 +69,7 @@ if(WIN32)
   else()
     # We do not require administrative privileges, therefore we install to user folder
     # "C:\Users\<username>\AppData\Local".
-    set(Slicer_CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA\\\\${Slicer_ORGANIZATION_NAME}")
+    set(Slicer_CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA/${Slicer_ORGANIZATION_NAME}")
   endif()
 endif()
 

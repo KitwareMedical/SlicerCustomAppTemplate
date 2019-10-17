@@ -47,6 +47,10 @@ include(ExternalProjectDependency)
 set(Slicer_ADDITIONAL_DEPENDENCIES
   )
 
+#  Enable listed remote modules from ITK 
+set(Slicer_ITK_ADDITIONAL_MODULES
+  )
+
 if(NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_DEFAULT_BUILD_TYPE "Release")
 endif()

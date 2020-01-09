@@ -30,7 +30,7 @@ Prerequisites
 
     * Setup [your git username](https://help.github.com/articles/setting-your-username-in-git) and [your git email](https://help.github.com/articles/setting-your-email-in-git).
 
-    * If not already done, email `Jean-Christophe Fillion-Robin <jchris.fillionr@kitware.com>` to be granted access to
+    * If not already done, email `FirstName LastName <firstname.lastname@{{cookiecutter.github_organization}}.com>` to be granted access to
     the [{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}](https://github.com/{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}) repository.
 
 Checkout

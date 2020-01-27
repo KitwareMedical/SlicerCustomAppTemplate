@@ -97,6 +97,7 @@ option(Slicer_BUILD_BRAINSTOOLS                 "Build application with BRAINSTo
 option(Slicer_BUILD_DataStore                   "Build application with DataStore module"             OFF)
 option(Slicer_BUILD_CompareVolumes              "Build application with ChangeTrackerPy module"       OFF)
 option(Slicer_BUILD_LandmarkRegistration        "Build application with LandmarkRegistration module"  OFF)
+option(Slicer_BUILD_SurfaceToolbox              "Build application with SurfaceToolbox module"        OFF)
 
 # Enable Slicer built-in modules
 set(Slicer_CLIMODULES_ENABLED
@@ -123,7 +124,6 @@ set(Slicer_QTSCRIPTEDMODULES_DISABLED
   LabelStatistics
   PerformanceTests
   SampleData
-  SurfaceToolbox
   VectorToScalarVolume
   )
 

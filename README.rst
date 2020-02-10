@@ -34,7 +34,7 @@ Authors
 
 * Julien Finet
 * Jean-Christophe Fillion-Robin
-* Dzenan Zukic
+* Dženan Zukić
 * Johan Andruejol
 * Alexis Girault
 * Cory Quammen

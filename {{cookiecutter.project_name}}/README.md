@@ -3,23 +3,27 @@
 
 {{cookiecutter.app_description_summary}}
 
-![{{cookiecutter.project_name}} by {{cookiecutter.org_name}}](Applications/App/Resources/Images/LogoFull.png?raw=true)
+![{{cookiecutter.project_name}} by {{cookiecutter.org_name}}](Applications/{{cookiecutter.app_name}}App/Resources/Images/LogoFull.png?raw=true)
 
-Prerequisites
+Windows Build Instructions
+--------------------------
+
+Instructions for the Windows build are listed below. The app can also be built on Linux and macOS. See: [3D Slicer Developer Wiki](http://wiki.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers)
+
+Prerequisites 
 -------------
 
 * Microsoft Windows 7 or above recommended
 
 * Supported Microsoft Visual Studio versions:
     * Visual Studio 2015
+    * Visual Studio 2017
 
 * [CMake](http://cmake.org/cmake/resources/software.html), version 3.11 or above
 
 * Qt, version 5.10 or above
 
 * [Git](http://git-scm.com/downloads)
-
-* [Subversion](http://www.sliksvn.com/en/download)
 
 * Setting up your git account:
 
@@ -55,7 +59,7 @@ Note: The build process will take approximately 3 hours.
 <b>Option 1: CMake GUI and Visual Studio (Recommended)</b>
 
 1. Start [CMake GUI](https://cmake.org/runningcmake/), select source directory `C:\W\{{cookiecutter.github_project}}` and set build directory to `C:\W\{{cookiecutter.github_project}}-rel`.
-2. Add an entry `QT_QMAKE_EXECUTABLE` pointing to `C:\D\Support\qt-4.8.7-64-vs2013-rel`.
+2. Add an entry `Qt5_DIR` pointing to `C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5`.
 2. Generate the project.
 3. Open `C:\W\{{cookiecutter.github_project}}-rel\{{cookiecutter.project_name}}.sln`, select `Release` and build the project.
 
@@ -68,7 +72,7 @@ Note: The build process will take approximately 3 hours.
 cd C:\W\
 mkdir {{cookiecutter.github_project}}-rel
 cd {{cookiecutter.github_project}}-rel
-cmake -G "Visual Studio 14 2015 Win64" -DQT_QMAKE_EXECUTABLE:PATH=C:\Qt\5.9.1\msvc2015_64\bin\qmake.exe ..\{{cookiecutter.github_project}}
+cmake -G "Visual Studio 14 2015 Win64" -DQt5_DIR:PATH=`C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5 ..\{{cookiecutter.github_project}}
 cmake --build . --config Release
 ```
 

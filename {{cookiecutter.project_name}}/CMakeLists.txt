@@ -52,7 +52,7 @@ set(Slicer_ITK_ADDITIONAL_MODULES
   )
 
 if(NOT CMAKE_CONFIGURATION_TYPES)
-  set(CMAKE_DEFAULT_BUILD_TYPE "Release")
+  set(Slicer_DEFAULT_BUILD_TYPE "Release")
 endif()
 include(SlicerInitializeBuildType)
 include(SlicerInitializeReleaseType)

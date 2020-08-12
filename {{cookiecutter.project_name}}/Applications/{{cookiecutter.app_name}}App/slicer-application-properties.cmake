@@ -30,7 +30,9 @@ set(WIN_ICON_FILE
   "${CMAKE_CURRENT_LIST_DIR}/Resources/Icons/DesktopIcon.ico"
   )
 
-set(LICENSE_FILE
-  "${Slicer_SOURCE_DIR}/License.txt"
+set(PROJECT_SOURCE_DIR
+  "{{cookiecutter.projection_name}}_SOURCE_DIR"
   )
-
+set(LICENSE_FILE
+  "${PROJECT_SOURCE_DIR}/License.txt"
+  )

@@ -31,5 +31,5 @@ set(WIN_ICON_FILE
   )
 
 set(LICENSE_FILE
-  "${ '{' }}{{cookiecutter.project_name}}_SOURCE_DIR}/LICENSE"
+  "${{ "{" }}{{cookiecutter.project_name}}_SOURCE_DIR}/LICENSE"
   )

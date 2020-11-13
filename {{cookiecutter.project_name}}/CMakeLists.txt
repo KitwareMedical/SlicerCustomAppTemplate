@@ -57,6 +57,11 @@ endif()
 include(SlicerInitializeBuildType)
 include(SlicerInitializeReleaseType)
 
+# Set application bundle identifier for macOS
+if(APPLE)
+  set(Slicer_MACOSX_BUNDLE_GUI_IDENTIFIER "{{cookiecutter.bundle_identifier}}")
+endif()
+
 # Installation folder and admin account requirement for Windows
 if(WIN32)
   # Note: To avoid escaping issue, make sure to use forward slash when setting

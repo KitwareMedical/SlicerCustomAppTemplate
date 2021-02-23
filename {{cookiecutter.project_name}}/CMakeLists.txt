@@ -136,7 +136,7 @@ set(Slicer_QTSCRIPTEDMODULES_DISABLED
 set(Slicer_EXTENSION_SOURCE_DIRS
   #${{ '{' }}{{cookiecutter.project_name}}_SOURCE_DIR}/Modules/CLI/MyCLIModule
   #${{ '{' }}{{cookiecutter.project_name}}_SOURCE_DIR}/Modules/Loadable/MyLoadableModule
-  #${{ '{' }}{{cookiecutter.project_name}}_SOURCE_DIR}/Modules/Scripted/MyScriptedModule
+  ${{ '{' }}{{cookiecutter.project_name}}_SOURCE_DIR}/Modules/Scripted/Home
   )
 
 # Add remote extension source directories

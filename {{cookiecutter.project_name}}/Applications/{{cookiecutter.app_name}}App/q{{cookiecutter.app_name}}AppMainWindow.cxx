@@ -78,7 +78,6 @@ void q{{cookiecutter.app_name}}AppMainWindowPrivate::setupUi(QMainWindow * mainW
   mainWindow->setWindowIcon(QIcon(":/Icons/Medium/DesktopIcon.png"));
 
   QPixmap logo(":/LogoFull.png");
-  logo.setDevicePixelRatio(dpr);
   this->LogoLabel->setPixmap(logo);
 
   // Hide the toolbars

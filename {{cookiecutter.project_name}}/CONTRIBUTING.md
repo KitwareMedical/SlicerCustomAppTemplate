@@ -19,7 +19,7 @@ repository, here are the steps:
 4. [Push][push] the branch to your GitHub fork.
 5. Create a [Pull Request][pr].
 
-This corresponds to the `Fork & Pull Model` mentioned in the [GitHub flow](https://guides.github.com/introduction/flow/index.html)
+This corresponds to the `Fork & Pull Model` described in the [GitHub documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models)
 guides.
 
 If you have push access to this repository, you could simply push your branch

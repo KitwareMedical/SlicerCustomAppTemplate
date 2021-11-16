@@ -1,23 +1,14 @@
 Build and Package {{cookiecutter.project_name}}
 ==============================
 
-This document summarizes how to build and package {{cookiecutter.project_name}} on Windows. Instructions for Linux and macOS are similar.
-For more details, see [3D Slicer Developer Wiki](http://wiki.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers)
+This document summarizes how to build and package {{cookiecutter.project_name}} on Windows.
 
-Prerequisites 
+{{cookiecutter.project_name}} is a custom Slicer application. Reading the [3D Slicer Developer Documentation](https://slicer.readthedocs.io/en/latest/developer_guide/index.html) may help answer additional questions.
+
+The initial source files were created using [KitwareMedical/SlicerCustomAppTemplate](https://github.com/KitwareMedical/SlicerCustomAppTemplate).
+
+Prerequisites
 -------------
-
-* Microsoft Windows 7 or above recommended
-
-* Supported Microsoft Visual Studio versions:
-    * Visual Studio 2015
-    * Visual Studio 2017
-
-* [CMake](http://cmake.org/cmake/resources/software.html), version 3.11 or above
-
-* Qt, version 5.10 or above
-
-* [Git](http://git-scm.com/downloads)
 
 * Setting up your git account:
 
@@ -41,7 +32,7 @@ Checkout
 cd /c
 mkdir W
 cd /c/W
-git clone https://github.com/{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}.git {{cookiecutter.github_project}}
+git clone https://github.com/{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}.git {{cookiecutter.github_project|first}}
 ```
 
 Note: use short source and build directory names to avoid the [maximum path length limitation](http://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx#maxpath).
@@ -52,22 +43,22 @@ Note: The build process will take approximately 3 hours.
 
 <b>Option 1: CMake GUI and Visual Studio (Recommended)</b>
 
-1. Start [CMake GUI](https://cmake.org/runningcmake/), select source directory `C:\W\{{cookiecutter.github_project}}` and set build directory to `C:\W\{{cookiecutter.github_project}}-rel`.
+1. Start [CMake GUI](https://cmake.org/runningcmake/), select source directory `C:\W\{{cookiecutter.github_project|first}}` and set build directory to `C:\W\{{cookiecutter.github_project|first}}R`.
 2. Add an entry `Qt5_DIR` pointing to `C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5`.
 2. Generate the project.
-3. Open `C:\W\{{cookiecutter.github_project}}-rel\{{cookiecutter.project_name}}.sln`, select `Release` and build the project.
+3. Open `C:\W\{{cookiecutter.github_project|first}}R\{{cookiecutter.project_name}}.sln`, select `Release` and build the project.
 
 <b>Option 2: Command Line</b>
 
 1. Start the [Command Line Prompt](http://windows.microsoft.com/en-us/windows/command-prompt-faq)
-2. Configure and build the project in `C:\W\{{cookiecutter.github_project}}-rel` by typing the following commands:
+2. Configure and build the project in `C:\W\{{cookiecutter.github_project|first}}R` by typing the following commands:
 
 ```bat
 cd C:\W\
-mkdir {{cookiecutter.github_project}}-rel
-cd {{cookiecutter.github_project}}-rel
-cmake -G "Visual Studio 14 2015 Win64" -DQt5_DIR:PATH=`C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5 ..\{{cookiecutter.github_project}}
-cmake --build . --config Release
+mkdir {{cookiecutter.github_project|first}}R
+cd {{cookiecutter.github_project|first}}R
+cmake -G "Visual Studio 16 2019" -A x64 -DQt5_DIR:PATH=`C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5 ..\{{cookiecutter.github_project|first}}
+cmake --build . --config Release -- /maxcpucount:4
 ```
 
 Package
@@ -75,9 +66,9 @@ Package
 
 Install [NSIS 2](http://sourceforge.net/projects/nsis/files/)
 
-<b>Option 1: CMake and Visual Studio (Recommended)</b>
+<b>Option 1: CMake and Visual Studio</b>
 
-1. In the `C:\W\{{cookiecutter.github_project}}-rel\Slicer-build` directory, open `Slicer.sln` and build the `PACKAGE` target
+1. In the `C:\W\{{cookiecutter.github_project|first}}R\Slicer-build` directory, open `Slicer.sln` and build the `PACKAGE` target
 
 <b>Option 2: Command Line</b>
 
@@ -85,7 +76,7 @@ Install [NSIS 2](http://sourceforge.net/projects/nsis/files/)
 2. Build the `PACKAGE` target by typing the following commands:
 
 ```bat
-cd C:\W\{{cookiecutter.github_project}}-rel\Slicer-build
+cd C:\W\{{cookiecutter.github_project|first}}R\Slicer-build
 cmake --build . --config Release --target PACKAGE
 ```
 

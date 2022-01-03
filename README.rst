@@ -6,9 +6,7 @@ This project is a template to be used as a starting point for creating a custom 
 `3D Slicer`_ is an open-source and extensible application for visualization and medical image
 analysis. 3D Slicer works with optical imaging, MRI, CT, and ultrasound data.
 
-At `Kitware`_, we have applied 3D Slicer to research and commercial applications ranging from
-pre-clinical animal studies, to surgical planning and guidance, to ultrasound image analysis, to
-medical robot control, to population studies.
+At `Kitware`_, we help customers develop commercial products based on 3D Slicer and we have used the platform to rapidly prototype solutions in nearly every aspect of medical imaging.
 
 .. _3D Slicer: https://slicer.org
 .. _Kitware: https://www.kitware.com

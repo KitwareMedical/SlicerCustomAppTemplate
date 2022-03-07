@@ -1,18 +1,20 @@
-cmake_minimum_required(VERSION 3.13.4)
+cmake_minimum_required(VERSION 3.16.3)
 
-# Enable C++11
+# Enable C++14
 if(NOT DEFINED CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 11)
+  set(CMAKE_CXX_STANDARD 14)
 endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+set (EP_GIT_PROTOCOL "https")
 
 # Slicer sources
 include(FetchContent)
 if(NOT DEFINED slicersources_SOURCE_DIR)
   # Download Slicer sources and set variables slicersources_SOURCE_DIR and slicersources_BINARY_DIR
   FetchContent_Populate(slicersources
-    GIT_REPOSITORY git://github.com/Slicer/Slicer
+    GIT_REPOSITORY ${EP_GIT_PROTOCOL}://github.com/Slicer/Slicer
     GIT_TAG        {% github_repo_branch_sha "Slicer/Slicer" %}
     GIT_PROGRESS   1
     )
@@ -47,7 +49,7 @@ include(ExternalProjectDependency)
 set(Slicer_ADDITIONAL_DEPENDENCIES
   )
 
-#  Enable listed remote modules from ITK 
+#  Enable listed remote modules from ITK
 set(Slicer_ITK_ADDITIONAL_MODULES
   )
 

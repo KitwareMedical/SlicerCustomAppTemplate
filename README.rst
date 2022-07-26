@@ -21,6 +21,15 @@ The following will get a custom 3D Slicer application started in a new repositor
   # Fill in the information requested at the prompts
 
 
+FAQ
+---
+
+Which version of Slicer do the generated application build against ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Leveraging the ``jinja2-github`` plugin, the ``cookiecutter`` template generator will retrieve the latest commit associated with the Slicer repository default branch and it will set it as ``GIT_TAG`` value in the generated ``CMakeLists.txt``.
+
+
 License
 -------
 

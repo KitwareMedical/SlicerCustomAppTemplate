@@ -20,6 +20,14 @@ The following will get a custom 3D Slicer application started in a new repositor
   cookiecutter gh:KitwareMedical/SlicerCustomAppTemplate
   # Fill in the information requested at the prompts
 
+We suggest to use the following commit message for checking in the results of these commands::
+
+  COMP: Add Project stub 
+
+  Generated from KitwareMedical/SlicerCustomAppTemplate@<SHA of main>
+  Project is based on Slicer/Slicer@<SHA of main>
+
+This will mark the version of the template file used and the Slicer version in the git history
 
 FAQ
 ---
@@ -28,6 +36,7 @@ Which version of Slicer do the generated application build against ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Leveraging the ``jinja2-github`` plugin, the ``cookiecutter`` template generator will retrieve the latest commit associated with the Slicer repository default branch and it will set it as ``GIT_TAG`` value in the generated ``CMakeLists.txt``.
+
 
 
 License

@@ -219,47 +219,6 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     # controller.sliceViewLabel = ''
   
 
-
-
-class HomeTest(ScriptedLoadableModuleTest):
-  """
-  This is the test case for your scripted module.
-  Uses ScriptedLoadableModuleTest base class, available at:
-  https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
-  """
-
-  def setUp(self):
-    """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-    """
-    slicer.mrmlScene.Clear(0)
-
-  def runTest(self):
-    """Run as few or as many tests as needed here.
-    """
-    self.setUp()
-    self.test_Home1()
-
-  def test_Home1(self):
-    """ Ideally you should have several levels of tests.  At the lowest level
-    tests should exercise the functionality of the logic with different inputs
-    (both valid and invalid).  At higher levels your tests should emulate the
-    way the user would interact with your code and confirm that it still works
-    the way you intended.
-    One of the most important features of the tests is that it should alert other
-    developers when their changes will have an impact on the behavior of your
-    module.  For example, if a developer removes a feature that you depend on,
-    your test should break so they know that the feature is needed.
-    """
-
-    self.delayDisplay("Starting the test")
-    #
-    # first, get some data
-    #
-
-    logic = HomeLogic()
-    self.delayDisplay('Test passed!')
-
-
 #
 # Class for avoiding python error that is caused by the method SegmentEditor::setup
 # http://issues.slicer.org/view.php?id=3871

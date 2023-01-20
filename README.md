@@ -20,10 +20,13 @@ cookiecutter gh:KitwareMedical/SlicerCustomAppTemplate
 We suggest to use the following commit message for checking in the results of these commands:
 
 ```
-COMP: Add Project stub 
+ENH: Add <custom name> application sources
 
-Generated from KitwareMedical/SlicerCustomAppTemplate@<SHA of main>
-Project is based on Slicer/Slicer@<SHA of main>
+This commit adds source files generated using KitwareMedical/SlicerCustomAppTemplate@<SHA of main>
+and referencing Slicer/Slicer@<SHA of main>.
+
+Features and improvements specific to the custom application will be integrated
+in follow-up commits.
 ```
 
 This will mark the version of the template file used and the Slicer version in the git history

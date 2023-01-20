@@ -217,12 +217,4 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     # controller.setRulerColor(0) #White ruler
     # controller.setStyleSheet("background-color: #000000")
     # controller.sliceViewLabel = ''
-  
 
-#
-# Class for avoiding python error that is caused by the method SegmentEditor::setup
-# http://issues.slicer.org/view.php?id=3871
-#
-class HomeFileWriter(object):
-  def __init__(self, parent):
-    pass

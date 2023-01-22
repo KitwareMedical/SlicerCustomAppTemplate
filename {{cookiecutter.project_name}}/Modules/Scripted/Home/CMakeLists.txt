@@ -10,8 +10,8 @@ set(MODULE_PYTHON_RESOURCES
   Resources/Icons/${MODULE_NAME}.png
   Resources/Icons/Gears.png
   Resources/UI/${MODULE_NAME}.ui
-  Resources/UI/Settings.ui  
-  Resources/Home.qss  
+  Resources/UI/Settings.ui
+  Resources/Home.qss
   )
 
 slicerFunctionAddPythonQtResources(MODULE_PYTHON_QRC_RESOURCES

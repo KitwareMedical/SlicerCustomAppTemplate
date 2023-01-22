@@ -6,9 +6,9 @@
 
 <RCC version="1.0">
 
-  <qresource prefix="Icons">    
+  <qresource prefix="Icons">
     <file alias="Gears.png">Icons/Gears.png</file>
-    <file alias="Home.png">Icons/Home.png</file> 
+    <file alias="Home.png">Icons/Home.png</file>
   </qresource>
 
 </RCC>

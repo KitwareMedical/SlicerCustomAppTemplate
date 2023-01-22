@@ -69,7 +69,7 @@ void q{{cookiecutter.app_name}}AppMainWindowPrivate::setupUi(QMainWindow * mainW
   // to "QMetaObject::connectSlotsByName()" done in "setupUi()" to
   // successfully connect each slot with its corresponding action.
   this->Superclass::setupUi(mainWindow);
-  
+
   // Add Help Menu Action
   this->HelpMenu->addAction(helpAboutSlicerAppAction);
 

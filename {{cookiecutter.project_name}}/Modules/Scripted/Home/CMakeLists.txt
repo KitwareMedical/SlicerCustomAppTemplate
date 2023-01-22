@@ -14,14 +14,10 @@ set(MODULE_PYTHON_RESOURCES
   Resources/Home.qss
   )
 
-slicerFunctionAddPythonQtResources(MODULE_PYTHON_QRC_RESOURCES
-  Resources/HomeResources.qrc
-  )
-
 #-----------------------------------------------------------------------------
 slicerMacroBuildScriptedModule(
   NAME ${MODULE_NAME}
-  SCRIPTS ${MODULE_PYTHON_SCRIPTS}  ${MODULE_PYTHON_QRC_RESOURCES}
+  SCRIPTS ${MODULE_PYTHON_SCRIPTS}
   RESOURCES ${MODULE_PYTHON_RESOURCES}
   )
 

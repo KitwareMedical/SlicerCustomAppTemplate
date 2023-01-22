@@ -3,7 +3,6 @@ import vtk, qt, ctk, slicer
 from slicer.ScriptedLoadableModule import *
 import logging
 from slicer.util import VTKObservationMixin
-# from Resources import HomeResourcesResources
 
 
 class Home(ScriptedLoadableModule):

@@ -5,6 +5,7 @@ import logging
 from slicer.util import VTKObservationMixin
 # from Resources import HomeResourcesResources
 
+
 class Home(ScriptedLoadableModule):
   """Uses ScriptedLoadableModule base class, available at:
   https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
@@ -29,7 +30,6 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
   def __init__(self, parent):
     ScriptedLoadableModuleWidget.__init__(self, parent)
     VTKObservationMixin.__init__(self)
-  
 
   def setup(self):
     ScriptedLoadableModuleWidget.setup(self)
@@ -49,18 +49,15 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.setupNodes()
 
     #Dark palette does not propagate on its own?
-    self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())    
+    self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())
 
     #Apply style
-    self.applyApplicationStyle()  
-
-  
+    self.applyApplicationStyle()
 
   def setupNodes(self):
     #Set up the layout / 3D View
     self.logic.setup3DView()
-    self.logic.setupSliceViewers()  
-
+    self.logic.setupSliceViewers()
 
   def onClose(self, unusedOne, unusedTwo):
     pass
@@ -82,7 +79,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       slicer.util.findChild(slicer.util.mainWindow(), 'CustomToolBar'),
       ]
     slicer.util.setToolbarsVisible(False, keepToolbars)
-  
+
   def showSlicerUI(self):
     slicer.util.setDataProbeVisible(True)
     slicer.util.setMenuBarsVisible(True)
@@ -90,19 +87,17 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     slicer.util.setModulePanelTitleVisible(True)
     slicer.util.setPythonConsoleVisible(True)
     slicer.util.setToolbarsVisible(True)
-    
-  
+
   def modifyWindowUI(self):
     slicer.util.setModuleHelpSectionVisible(False)
-      
     mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar')
 
     self.CustomToolBar = qt.QToolBar("CustomToolBar")
     self.CustomToolBar.name = "CustomToolBar"
     slicer.util.mainWindow().insertToolBar(mainToolBar, self.CustomToolBar)
-    
+
 #     central = slicer.util.findChild(slicer.util.mainWindow(), name='CentralWidget')
-#     central.setStyleSheet("background-color: #464449")    
+#     central.setStyleSheet("background-color: #464449")
 
     gearIcon = qt.QIcon(self.resourcePath('Icons/Gears.png'))
     self.settingsAction = self.CustomToolBar.addAction(gearIcon, "")
@@ -114,28 +109,26 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.settingsUI.CustomStyleCheckBox.toggled.connect(self.toggleStyle)
 
     self.settingsAction.triggered.connect(self.raiseSettings)
-    self.hideSlicerUI() 
-
+    self.hideSlicerUI()
 
   def toggleStyle(self,visible):
     if visible:
       self.applyApplicationStyle()
     else:
       slicer.app.styleSheet = ''
-  
+
   def toggleUI(self, visible):
     if visible:
       self.hideSlicerUI()
     else:
       self.showSlicerUI()
-  
+
   def raiseSettings(self, unused):
-    self.settingsDialog.exec()  
+    self.settingsDialog.exec()
 
   def applyApplicationStyle(self):
     # Style
     self.applyStyle([slicer.app], 'Home.qss')
-    
 
   def applyStyle(self, widgets, styleSheetName):
     stylesheetfile = self.resourcePath(styleSheetName)
@@ -143,9 +136,6 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       style = fh.read()
       for widget in widgets:
         widget.styleSheet = style
-
-  
-  
 
 
 class HomeLogic(ScriptedLoadableModuleLogic):
@@ -162,7 +152,6 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     """
     Run the actual algorithm
     """
-
     pass
 
   def exitApplication(self,status=slicer.util.EXIT_SUCCESS, message=None):
@@ -178,10 +167,8 @@ class HomeLogic(ScriptedLoadableModuleLogic):
           logging.error(message)
       slicer.util.mainWindow().hide()
       slicer.util.exit(slicer.util.EXIT_FAILURE)
-    qt.QTimer.singleShot(0, _exitApplication)  
-  
-  
-  
+    qt.QTimer.singleShot(0, _exitApplication)
+
   #settings for 3D view
   def setup3DView(self):
     layoutManager = slicer.app.layoutManager()
@@ -191,7 +178,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     # controller.set3DAxisVisible(False)
     # controller.set3DAxisLabelVisible(False)
     # controller.setOrientationMarkerType(3)  #Axis marker
-    # controller.setStyleSheet("background-color: #000000")  
+    # controller.setStyleSheet("background-color: #000000")
 
   def setupSliceViewers(self):
     for name in slicer.app.layoutManager().sliceViewNames():
@@ -217,4 +204,3 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     # controller.setRulerColor(0) #White ruler
     # controller.setStyleSheet("background-color: #000000")
     # controller.sliceViewLabel = ''
-

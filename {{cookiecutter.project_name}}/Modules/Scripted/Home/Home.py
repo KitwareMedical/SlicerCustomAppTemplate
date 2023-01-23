@@ -18,13 +18,13 @@ class Home(ScriptedLoadableModule):
 
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
-    self.parent.title = "Home" # TODO make this more human readable by adding spaces
+    self.parent.title = "Home"  # TODO make this more human readable by adding spaces
     self.parent.categories = [""]
     self.parent.dependencies = []
     self.parent.contributors = ["Sam Horvath (Kitware Inc.)"]
     self.parent.helpText = """This is the Home module for the custom application"""
     self.parent.helpText += self.getDefaultModuleDocumentationLink()
-    self.parent.acknowledgementText = """...""" # replace with organization, grant and thanks.
+    self.parent.acknowledgementText = """..."""  # replace with organization, grant and thanks.
 
 
 class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
@@ -44,23 +44,22 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.layout.addWidget(self.uiWidget)
     self.ui = slicer.util.childWidgetVariables(self.uiWidget)
 
-    #Remove unneeded UI elements
+    # Remove unneeded UI elements
     self.modifyWindowUI()
 
-    #Create logic class
+    # Create logic class
     self.logic = HomeLogic()
 
-    #setup scene defaults
+    # Setup scene defaults
     self.setupNodes()
 
-    #Dark palette does not propagate on its own?
+    # Dark palette does not propagate on its own?
     self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())
 
-    #Apply style
+    # Apply style
     self.applyApplicationStyle()
 
   def setupNodes(self):
-    #Set up the layout / 3D View
     self.logic.setup3DView()
     self.logic.setupSliceViewers()
 
@@ -132,7 +131,6 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.settingsDialog.exec()
 
   def applyApplicationStyle(self):
-    # Style
     self.applyStyle([slicer.app], 'Home.qss')
 
   def applyStyle(self, widgets, styleSheetName):
@@ -174,7 +172,6 @@ class HomeLogic(ScriptedLoadableModuleLogic):
       slicer.util.exit(slicer.util.EXIT_FAILURE)
     qt.QTimer.singleShot(0, _exitApplication)
 
-  #settings for 3D view
   def setup3DView(self):
     layoutManager = slicer.app.layoutManager()
     # layoutManager.setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutOneUp3DView)
@@ -201,7 +198,6 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     for sliceCompositeNode in sliceCompositeNodes:
       sliceCompositeNode.SetLinkedControl(True)
 
-  #Settings for slice views
   def setupSliceViewer(self, sliceWidget):
     controller = sliceWidget.sliceController()
     # controller.setOrientationMarkerType(3)  #Axis marker

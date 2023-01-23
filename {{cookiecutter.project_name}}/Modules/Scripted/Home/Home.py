@@ -86,9 +86,9 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     slicer.util.setToolbarsVisible(visible, keepToolbars)
 
   def modifyWindowUI(self):
-    slicer.util.setModuleHelpSectionVisible(False)
-    mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar')
 
+    # Custom toolbar
+    mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar')
     self.CustomToolBar = qt.QToolBar("CustomToolBar")
     self.CustomToolBar.name = "CustomToolBar"
     slicer.util.mainWindow().insertToolBar(mainToolBar, self.CustomToolBar)
@@ -96,15 +96,13 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 #     central = slicer.util.findChild(slicer.util.mainWindow(), name='CentralWidget')
 #     central.setStyleSheet("background-color: #464449")
 
+    # Settings dialog
     gearIcon = qt.QIcon(self.resourcePath('Icons/Gears.png'))
     self.settingsAction = self.CustomToolBar.addAction(gearIcon, "")
-
     self.settingsDialog = slicer.util.loadUI(self.resourcePath('UI/Settings.ui'))
     self.settingsUI = slicer.util.childWidgetVariables(self.settingsDialog)
-
     self.settingsUI.CustomUICheckBox.toggled.connect(self.setCustomUIVisible)
     self.settingsUI.CustomStyleCheckBox.toggled.connect(self.toggleStyle)
-
     self.settingsAction.triggered.connect(self.raiseSettings)
 
   def toggleStyle(self,visible):

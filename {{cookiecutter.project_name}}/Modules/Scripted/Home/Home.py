@@ -56,6 +56,8 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     # Dark palette does not propagate on its own?
     self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())
 
+    self.setCustomUIVisible(True)
+
     # Apply style
     self.applyApplicationStyle()
 
@@ -69,28 +71,19 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
   def cleanup(self):
     pass
 
-  def hideSlicerUI(self):
-    slicer.util.setDataProbeVisible(False)
-    slicer.util.setMenuBarsVisible(False, ignore=['MainToolBar', 'ViewToolBar'])
-    slicer.util.setModuleHelpSectionVisible(False)
-    slicer.util.setModulePanelTitleVisible(False)
-    slicer.util.setPythonConsoleVisible(False)
-    slicer.util.setToolbarsVisible(True)
-    mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar')
+  def setSlicerUIVisible(self, visible):
+    slicer.util.setDataProbeVisible(visible)
+    slicer.util.setMenuBarsVisible(visible, ignore=['MainToolBar', 'ViewToolBar'])
+    slicer.util.setModuleHelpSectionVisible(visible)
+    slicer.util.setModulePanelTitleVisible(visible)
+    slicer.util.setPythonConsoleVisible(visible)
+    slicer.util.setApplicationLogoVisible(visible)
     keepToolbars = [
       slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar'),
       slicer.util.findChild(slicer.util.mainWindow(), 'ViewToolBar'),
       slicer.util.findChild(slicer.util.mainWindow(), 'CustomToolBar'),
       ]
-    slicer.util.setToolbarsVisible(False, keepToolbars)
-
-  def showSlicerUI(self):
-    slicer.util.setDataProbeVisible(True)
-    slicer.util.setMenuBarsVisible(True)
-    slicer.util.setModuleHelpSectionVisible(True)
-    slicer.util.setModulePanelTitleVisible(True)
-    slicer.util.setPythonConsoleVisible(True)
-    slicer.util.setToolbarsVisible(True)
+    slicer.util.setToolbarsVisible(visible, keepToolbars)
 
   def modifyWindowUI(self):
     slicer.util.setModuleHelpSectionVisible(False)
@@ -109,11 +102,10 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.settingsDialog = slicer.util.loadUI(self.resourcePath('UI/Settings.ui'))
     self.settingsUI = slicer.util.childWidgetVariables(self.settingsDialog)
 
-    self.settingsUI.CustomUICheckBox.toggled.connect(self.toggleUI)
+    self.settingsUI.CustomUICheckBox.toggled.connect(self.setCustomUIVisible)
     self.settingsUI.CustomStyleCheckBox.toggled.connect(self.toggleStyle)
 
     self.settingsAction.triggered.connect(self.raiseSettings)
-    self.hideSlicerUI()
 
   def toggleStyle(self,visible):
     if visible:
@@ -121,14 +113,11 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     else:
       slicer.app.styleSheet = ''
 
-  def toggleUI(self, visible):
-    if visible:
-      self.hideSlicerUI()
-    else:
-      self.showSlicerUI()
-
   def raiseSettings(self, unused):
     self.settingsDialog.exec()
+
+  def setCustomUIVisible(self, visible):
+    self.setSlicerUIVisible(not visible)
 
   def applyApplicationStyle(self):
     self.applyStyle([slicer.app], 'Home.qss')

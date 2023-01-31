@@ -148,21 +148,6 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     """
     pass
 
-  def exitApplication(self,status=slicer.util.EXIT_SUCCESS, message=None):
-    """Exit application.
-    If ``status`` is ``slicer.util.EXIT_SUCCESS``, ``message`` is logged using ``logging.info(message)``
-    otherwise it is logged using ``logging.error(message)``.
-    """
-    def _exitApplication():
-      if message:
-        if status == slicer.util.EXIT_SUCCESS:
-          logging.info(message)
-        else:
-          logging.error(message)
-      slicer.util.mainWindow().hide()
-      slicer.util.exit(slicer.util.EXIT_FAILURE)
-    qt.QTimer.singleShot(0, _exitApplication)
-
   def setup3DView(self):
     layoutManager = slicer.app.layoutManager()
     # layoutManager.setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutOneUp3DView)

@@ -12,17 +12,21 @@ from slicer.util import VTKObservationMixin
 
 
 class Home(ScriptedLoadableModule):
-  """Uses ScriptedLoadableModule base class, available at:
-  https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
+  """The home module allows to orchestrate and style the overall application workflow.
+
+  It is a "special" module in the sense that its role is to customize the application and
+  coordinate a workflow between other "regular" modules.
+
+  Associated widget and logic are not intended to be initialized multiple times.
   """
 
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
-    self.parent.title = "Home"  # TODO make this more human readable by adding spaces
+    self.parent.title = "Home"
     self.parent.categories = [""]
     self.parent.dependencies = []
-    self.parent.contributors = ["Sam Horvath (Kitware Inc.)"]
-    self.parent.helpText = """This is the Home module for the custom application"""
+    self.parent.contributors = ["Sam Horvath (Kitware Inc.)", "Jean-Christophe Fillion-Robin (Kitware Inc.)"]
+    self.parent.helpText = """This module orchestrates and styles the overall application workflow."""
     self.parent.helpText += self.getDefaultModuleDocumentationLink()
     self.parent.acknowledgementText = """..."""  # replace with organization, grant and thanks.
 

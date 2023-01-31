@@ -57,7 +57,7 @@ Note: The build process will take approximately 3 hours.
 cd C:\W\
 mkdir {{cookiecutter.github_project|first}}R
 cd {{cookiecutter.github_project|first}}R
-cmake -G "Visual Studio 16 2019" -A x64 -DQt5_DIR:PATH=`C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5 ..\{{cookiecutter.github_project|first}}
+cmake -G "Visual Studio 17 2022" -A x64 -DQt5_DIR:PATH=`C:/Qt/${QT_VERSION}/${COMPILER}/lib/cmake/Qt5 ..\{{cookiecutter.github_project|first}}
 cmake --build . --config Release -- /maxcpucount:4
 ```
 

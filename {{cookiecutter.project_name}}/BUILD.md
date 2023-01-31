@@ -14,8 +14,7 @@ Prerequisites
 
     * Create a [Github](https://github.com) account.
 
-    * Setup your SSH keys following [these](https://help.github.com/articles/generating-ssh-keys) instructions at the
-    exception of `step 2` where you should __NOT__ enter a passphrase.
+    * Setup your SSH keys following [these](https://help.github.com/articles/generating-ssh-keys) instructions.
 
     * Setup [your git username](https://help.github.com/articles/setting-your-username-in-git) and [your git email](https://help.github.com/articles/setting-your-email-in-git).
 

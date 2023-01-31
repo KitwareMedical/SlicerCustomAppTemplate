@@ -155,7 +155,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     # controller.setBlackBackground()
     # controller.set3DAxisVisible(False)
     # controller.set3DAxisLabelVisible(False)
-    # controller.setOrientationMarkerType(3)  #Axis marker
+    # controller.setOrientationMarkerType(3)  # Axis marker
     # controller.setStyleSheet("background-color: #000000")
 
   def setupSliceViewers(self):
@@ -165,8 +165,9 @@ class HomeLogic(ScriptedLoadableModuleLogic):
 
   def setupSliceViewer(self, sliceWidget):
     controller = sliceWidget.sliceController()
-    # controller.setOrientationMarkerType(3)  #Axis marker
-    # controller.setRulerType(1)  #Thin ruler
-    # controller.setRulerColor(0) #White ruler
     # controller.setStyleSheet("background-color: #000000")
     # controller.sliceViewLabel = ''
+    # slicer.util.findChild(sliceWidget, "PinButton").visible = False
+    # slicer.util.findChild(sliceWidget, "ViewLabel").visible = False
+    # slicer.util.findChild(sliceWidget, "FitToWindowToolButton").visible = False
+    # slicer.util.findChild(sliceWidget, "SliceOffsetSlider").spinBoxVisible = False

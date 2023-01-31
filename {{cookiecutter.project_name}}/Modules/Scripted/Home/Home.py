@@ -106,7 +106,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.settingsUI.CustomStyleCheckBox.toggled.connect(self.toggleStyle)
     self.settingsAction.triggered.connect(self.raiseSettings)
 
-  def toggleStyle(self,visible):
+  def toggleStyle(self, visible):
     if visible:
       self.applyApplicationStyle()
     else:
@@ -123,7 +123,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
   def applyStyle(self, widgets, styleSheetName):
     stylesheetfile = self.resourcePath(styleSheetName)
-    with open(stylesheetfile,"r") as fh:
+    with open(stylesheetfile, "r") as fh:
       style = fh.read()
       for widget in widgets:
         widget.styleSheet = style

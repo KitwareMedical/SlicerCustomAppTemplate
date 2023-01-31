@@ -44,7 +44,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     ScriptedLoadableModuleWidget.setup(self)
 
     # Load widget from .ui file (created by Qt Designer)
-    self.uiWidget = slicer.util.loadUI(self.resourcePath('UI/Home.ui'))
+    self.uiWidget = slicer.util.loadUI(self.resourcePath("UI/Home.ui"))
     self.layout.addWidget(self.uiWidget)
     self.ui = slicer.util.childWidgetVariables(self.uiWidget)
 
@@ -77,30 +77,30 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
   def setSlicerUIVisible(self, visible):
     slicer.util.setDataProbeVisible(visible)
-    slicer.util.setMenuBarsVisible(visible, ignore=['MainToolBar', 'ViewToolBar'])
+    slicer.util.setMenuBarsVisible(visible, ignore=["MainToolBar", "ViewToolBar"])
     slicer.util.setModuleHelpSectionVisible(visible)
     slicer.util.setModulePanelTitleVisible(visible)
     slicer.util.setPythonConsoleVisible(visible)
     slicer.util.setApplicationLogoVisible(visible)
     keepToolbars = [
-      slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar'),
-      slicer.util.findChild(slicer.util.mainWindow(), 'ViewToolBar'),
-      slicer.util.findChild(slicer.util.mainWindow(), 'CustomToolBar'),
+      slicer.util.findChild(slicer.util.mainWindow(), "MainToolBar"),
+      slicer.util.findChild(slicer.util.mainWindow(), "ViewToolBar"),
+      slicer.util.findChild(slicer.util.mainWindow(), "CustomToolBar"),
       ]
     slicer.util.setToolbarsVisible(visible, keepToolbars)
 
   def modifyWindowUI(self):
 
     # Custom toolbar
-    mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), 'MainToolBar')
+    mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), "MainToolBar")
     self.CustomToolBar = qt.QToolBar("CustomToolBar")
     self.CustomToolBar.name = "CustomToolBar"
     slicer.util.mainWindow().insertToolBar(mainToolBar, self.CustomToolBar)
 
     # Settings dialog
-    gearIcon = qt.QIcon(self.resourcePath('Icons/Gears.png'))
+    gearIcon = qt.QIcon(self.resourcePath("Icons/Gears.png"))
     self.settingsAction = self.CustomToolBar.addAction(gearIcon, "")
-    self.settingsDialog = slicer.util.loadUI(self.resourcePath('UI/Settings.ui'))
+    self.settingsDialog = slicer.util.loadUI(self.resourcePath("UI/Settings.ui"))
     self.settingsUI = slicer.util.childWidgetVariables(self.settingsDialog)
     self.settingsUI.CustomUICheckBox.toggled.connect(self.setCustomUIVisible)
     self.settingsUI.CustomStyleCheckBox.toggled.connect(self.toggleStyle)
@@ -110,7 +110,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     if visible:
       self.applyApplicationStyle()
     else:
-      slicer.app.styleSheet = ''
+      slicer.app.styleSheet = ""
 
   def raiseSettings(self, unused):
     self.settingsDialog.exec()
@@ -119,7 +119,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.setSlicerUIVisible(not visible)
 
   def applyApplicationStyle(self):
-    self.applyStyle([slicer.app], 'Home.qss')
+    self.applyStyle([slicer.app], "Home.qss")
 
   def applyStyle(self, widgets, styleSheetName):
     stylesheetfile = self.resourcePath(styleSheetName)
@@ -163,7 +163,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
   def setupSliceViewer(self, sliceWidget):
     controller = sliceWidget.sliceController()
     # controller.setStyleSheet("background-color: #000000")
-    # controller.sliceViewLabel = ''
+    # controller.sliceViewLabel = ""
     # slicer.util.findChild(sliceWidget, "PinButton").visible = False
     # slicer.util.findChild(sliceWidget, "ViewLabel").visible = False
     # slicer.util.findChild(sliceWidget, "FitToWindowToolButton").visible = False

@@ -25,7 +25,7 @@ Prerequisites
 Checkout
 --------
 
-1. Start [Git Bash](https://help.github.com/articles/set-up-git#need-a-quick-lesson-about-terminalterminalgit-bashthe-command-line)
+1. Start `Git Bash`
 2. Checkout the source code into a directory `C:\W\` by typing the following commands:
 
 ```bat
@@ -35,7 +35,7 @@ cd /c/W
 git clone https://github.com/{{cookiecutter.github_organization}}/{{cookiecutter.github_project}}.git {{cookiecutter.github_project|first}}
 ```
 
-Note: use short source and build directory names to avoid the [maximum path length limitation](http://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx#maxpath).
+Note: use short source and build directory names to avoid the [maximum path length limitation](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file#maximum-path-length-limitation).
 
 Build
 -----

@@ -97,9 +97,6 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.CustomToolBar.name = "CustomToolBar"
     slicer.util.mainWindow().insertToolBar(mainToolBar, self.CustomToolBar)
 
-#     central = slicer.util.findChild(slicer.util.mainWindow(), name='CentralWidget')
-#     central.setStyleSheet("background-color: #464449")
-
     # Settings dialog
     gearIcon = qt.QIcon(self.resourcePath('Icons/Gears.png'))
     self.settingsAction = self.CustomToolBar.addAction(gearIcon, "")

@@ -8,6 +8,8 @@ from slicer.ScriptedLoadableModule import (
 )
 from slicer.util import VTKObservationMixin
 
+import SlicerCustomAppUtilities
+
 
 class Home(ScriptedLoadableModule):
     """The home module allows to orchestrate and style the overall application workflow.
@@ -117,14 +119,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.setSlicerUIVisible(not visible)
 
     def applyApplicationStyle(self):
-        self.applyStyle([slicer.app], "Home.qss")
-
-    def applyStyle(self, widgets, styleSheetName):
-        stylesheetfile = self.resourcePath(styleSheetName)
-        with open(stylesheetfile, "r") as fh:
-            style = fh.read()
-            for widget in widgets:
-                widget.styleSheet = style
+        SlicerCustomAppUtilities.applyStyle([slicer.app], self.resourcePath("Home.qss"))
 
 
 class HomeLogic(ScriptedLoadableModuleLogic):

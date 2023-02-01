@@ -146,6 +146,19 @@ set(Slicer_EXTENSION_SOURCE_DIRS
 
 # Add remote extension source directories
 
+# SlicerCustomAppUtilities
+set(extension_name "SlicerCustomAppUtilities")
+set(${extension_name}_SOURCE_DIR "${CMAKE_BINARY_DIR}/${extension_name}")
+FetchContent_Populate(${extension_name}
+  SOURCE_DIR     ${${extension_name}_SOURCE_DIR}
+  GIT_REPOSITORY ${EP_GIT_PROTOCOL}://github.com/KitwareMedical/SlicerCustomAppUtilities.git
+  GIT_TAG        {% github_repo_branch_sha "KitwareMedical/SlicerCustomAppUtilities", "main" %}
+  GIT_PROGRESS   1
+  QUIET
+  )
+message(STATUS "Remote - ${extension_name} [OK]")
+list(APPEND Slicer_EXTENSION_SOURCE_DIRS ${${extension_name}_SOURCE_DIR}/Modules/Scripted/SlicerCustomAppUtilities)
+
 # SlicerOpenIGTLink
 #set(extension_name "SlicerOpenIGTLink")
 #set(${extension_name}_SOURCE_DIR "${CMAKE_BINARY_DIR}/${extension_name}")
@@ -156,6 +169,7 @@ set(Slicer_EXTENSION_SOURCE_DIRS
 #  GIT_PROGRESS   1
 #  QUIET
 #  )
+#message(STATUS "Remote - ${extension_name} [OK]")
 #list(APPEND Slicer_EXTENSION_SOURCE_DIRS ${${extension_name}_SOURCE_DIR})
 
 

@@ -10,6 +10,9 @@ from slicer.util import VTKObservationMixin
 
 import SlicerCustomAppUtilities
 
+# Import to ensure the files are available through the Qt resource system
+from Resources import HomeResources
+
 
 class Home(ScriptedLoadableModule):
     """The home module allows to orchestrate and style the overall application workflow.

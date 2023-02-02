@@ -37,10 +37,12 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     """
 
     def __init__(self, parent):
+        """Called when the application opens the module the first time and the widget is initialized."""
         ScriptedLoadableModuleWidget.__init__(self, parent)
         VTKObservationMixin.__init__(self)
 
     def setup(self):
+        """Called when the application opens the module the first time and the widget is initialized."""
         ScriptedLoadableModuleWidget.setup(self)
 
         # Load widget from .ui file (created by Qt Designer)
@@ -70,6 +72,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.logic.setupSliceViewers()
 
     def cleanup(self):
+        """Called when the application closes and the module widget is destroyed."""
         pass
 
     def setSlicerUIVisible(self, visible):

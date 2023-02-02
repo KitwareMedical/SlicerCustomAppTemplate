@@ -69,9 +69,6 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.logic.setup3DView()
         self.logic.setupSliceViewers()
 
-    def onClose(self, unusedOne, unusedTwo):
-        pass
-
     def cleanup(self):
         pass
 

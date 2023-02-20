@@ -10,5 +10,6 @@
   "app_version_minor": "1",
   "app_version_patch": "0",
   "app_description_summary": "Customized version of Slicer",
+  "cdash_drop_site": "open.cdash.org",
   "_extensions": ["jinja2_github.GitHubRepoBranchShaExtension"]
 }

@@ -32,7 +32,7 @@ Note: use short source and build directory names to avoid the [maximum path leng
 
 ## Build
 
-Note: The build process will take approximately 3 hours.
+Note: The build process can take hours.
 
 <b>Option 1: CMake GUI and Visual Studio (Recommended)</b>
 

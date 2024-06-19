@@ -16,6 +16,7 @@ _List key features_
 ## Development
 
 - [Contributing](CONTRIBUTING.md)
-- [Building](BUILD.md)
+- [Building on Windows](BUILD_WINDOWS.md)
+- [Building on Linux](BUILD_LINUX.md)
 
 ![{{cookiecutter.project_name}} by {{cookiecutter.org_name}}](Applications/{{cookiecutter.app_name}}App/Resources/Images/LogoFull.png?raw=true)

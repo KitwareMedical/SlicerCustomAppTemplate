@@ -23,17 +23,22 @@ Note: The build process can take hours.
 Assuming that Qt 5.15.2 was installed to `/opt/qt/` (if not then adjust the command accordingly):
 
 ```sh
-mkdir {{cookiecutter.app_name}}-superbuild
-cd {{cookiecutter.app_name}}-superbuild
-cmake -DCMAKE_BUILD_TYPE:STRING=Release -DQt5_DIR:PATH=/opt/qt/5.15.2/gcc_64/lib/cmake/Qt5 -S ../{{cookiecutter.github_project}} -B .
-make -j
+cmake \
+  -DCMAKE_BUILD_TYPE:STRING=Release \
+  -DQt5_DIR:PATH=/opt/qt/5.15.2/gcc_64/lib/cmake/Qt5 \
+  -S {{cookiecutter.github_project}} \
+  -B {{cookiecutter.github_project}}-SuperBuild-Release
+
+make -j<N>
 ```
 
-Once the application is built, there will be an "inner build" inside the superbuild folder, located at `{{cookiecutter.app_name}}-superbuild/Slicer-build`. The application executable is contained in this inner build folder.
+where `<N>` is the number of parallel builds. As a rule of thumb, many use the `number of CPU threads - 1` as the number of parallel builds.
+
+Once the application is built, there will be an _inner build_ inside the _superbuild_ folder, located at `{{cookiecutter.app_name}}-SuperBuild-Release/Slicer-build`. The application executable is contained in this _inner build_ folder.
 
 ## Package
 
-From the inner build folder:
+From the _inner build_ folder:
 
 ```sh
 make package

@@ -53,4 +53,3 @@ the *LICENSE* file for details.
 * Alexis Girault
 * Cory Quammen
 * Jamie Snape
-

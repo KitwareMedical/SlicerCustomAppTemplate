@@ -78,4 +78,3 @@ Install [NSIS 2](http://sourceforge.net/projects/nsis/files/)
 cd C:\W\{{cookiecutter.github_project|first}}R\Slicer-build
 cmake --build . --config Release --target PACKAGE
 ```
-

@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.6.0"
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+        exclude: "\\.(md5|svg|vtk|vtp)$|^Resources\\/[^\\/]+\\.h$|Data\\/Input\\/.+$"
+      - id: mixed-line-ending
+        exclude: "\\.(svg|vtk|vtp)$"
+      - id: trailing-whitespace
+        exclude: "\\.(svg|vtk|vtp)$"
+      - id: requirements-txt-fixer
+
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: "v3.3.3"
+    hooks:
+      - id: prettier
+        types_or: [yaml, json]
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.3.0"
+    hooks:
+      - id: codespell
+        exclude: "(.png|.svg)$"
+        args: ["-L", "dependees,normaly,therefrom"]
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: "0.29.1"
+    hooks:
+      - id: check-github-workflows

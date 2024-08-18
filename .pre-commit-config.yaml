@@ -1,0 +1,49 @@
+exclude: "^{{cookiecutter\\.project_name}}/"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.6.0"
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+      - id: requirements-txt-fixer
+
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: "1.18.0"
+    hooks:
+      - id: blacken-docs
+        additional_dependencies: [black==24.*]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.5.7"
+    hooks:
+      # Run the linter.
+      - id: ruff
+        args: ["--fix", "--show-fixes"]
+      # Run the formatter.
+      - id: ruff-format
+
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: "v3.3.3"
+    hooks:
+      - id: prettier
+        types_or: [yaml, json]
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.3.0"
+    hooks:
+      - id: codespell
+        args: ["-Lnd", "-w"]
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: "0.29.1"
+    hooks:
+      - id: check-github-workflows

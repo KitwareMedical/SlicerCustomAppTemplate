@@ -9,6 +9,7 @@ select = [
   "E", "F", "W", # flake8
   "EXE",         # flake8-executable
   "G",           # flake8-logging-format
+  "I",           # isort
   "ICN",         # flake8-import-conventions
   "ISC",         # flake8-implicit-str-concat
   "NPY",         # NumPy specific rules
@@ -50,5 +51,17 @@ extend-ignore = [
   "Q002",
   "Q003",
   "W191",
+]
+isort.known-third-party = [
+  "ctk",
+  "qt",
+  "slicer",
+  "SlicerCustomAppUtilities",
+  "vtk",
+]
+isort.known-first-party = [
+  "Home",
+  "HomeLib",
+  "Resources",
 ]
 pydocstyle.convention = "pep257"

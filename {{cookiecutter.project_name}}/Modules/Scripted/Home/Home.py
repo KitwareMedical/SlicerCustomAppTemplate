@@ -1,3 +1,5 @@
+from typing import Optional
+
 import qt
 import slicer
 import SlicerCustomAppUtilities
@@ -21,7 +23,7 @@ class Home(ScriptedLoadableModule):
     Associated widget and logic are not intended to be initialized multiple times.
     """
 
-    def __init__(self, parent):
+    def __init__(self, parent: Optional[qt.QWidget]):
         ScriptedLoadableModule.__init__(self, parent)
         self.parent.title = "Home"
         self.parent.categories = [""]
@@ -37,7 +39,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
     """
 
-    def __init__(self, parent):
+    def __init__(self, parent: Optional[qt.QWidget]):
         """Called when the application opens the module the first time and the widget is initialized."""
         ScriptedLoadableModuleWidget.__init__(self, parent)
         VTKObservationMixin.__init__(self)
@@ -76,7 +78,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         """Called when the application closes and the module widget is destroyed."""
         pass
 
-    def setSlicerUIVisible(self, visible):
+    def setSlicerUIVisible(self, visible: bool):
         slicer.util.setDataProbeVisible(visible)
         slicer.util.setMenuBarsVisible(visible, ignore=["MainToolBar", "ViewToolBar"])
         slicer.util.setModuleHelpSectionVisible(visible)
@@ -106,7 +108,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.settingsUI.CustomStyleCheckBox.toggled.connect(self.toggleStyle)
         self.settingsAction.triggered.connect(self.raiseSettings)
 
-    def toggleStyle(self, visible):
+    def toggleStyle(self, visible: bool):
         if visible:
             self.applyApplicationStyle()
         else:
@@ -115,7 +117,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     def raiseSettings(self, _):
         self.settingsDialog.exec()
 
-    def setCustomUIVisible(self, visible):
+    def setCustomUIVisible(self, visible: bool):
         self.setSlicerUIVisible(not visible)
 
     def applyApplicationStyle(self):
@@ -132,7 +134,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
     https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
     """
 
-    def run(self, inputVolume, outputVolume, imageThreshold, enableScreenshots=0):
+    def run(self, inputVolume, outputVolume, imageThreshold, enableScreenshots=0):  # noqa: ANN001
         """
         Run the actual algorithm
         """
@@ -153,7 +155,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
             sliceWidget = slicer.app.layoutManager().sliceWidget(name)
             self.setupSliceViewer(sliceWidget)
 
-    def setupSliceViewer(self, sliceWidget):
+    def setupSliceViewer(self, sliceWidget: slicer.qMRMLSliceWidget):
         controller = sliceWidget.sliceController()  # noqa: F841
         # controller.setStyleSheet("background-color: #000000")
         # controller.sliceViewLabel = ""

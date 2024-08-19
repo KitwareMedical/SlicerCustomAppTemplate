@@ -4,6 +4,7 @@ line-length = 120
 [lint]
 select = [
   "ARG",         # flake8-unused-arguments
+  "ANN",         # flake8-annotations
   "B",           # flake8-bugbear
   "C4",          # flake8-comprehensions
   "D",           # pydocstyle
@@ -53,6 +54,8 @@ extend-ignore = [
   "Q003",
   "W191",
 ]
+flake8-annotations.suppress-dummy-args = true
+flake8-annotations.suppress-none-returning = true
 isort.known-third-party = [
   "ctk",
   "qt",

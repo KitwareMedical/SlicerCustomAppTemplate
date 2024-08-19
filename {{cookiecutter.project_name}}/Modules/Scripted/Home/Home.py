@@ -112,7 +112,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         else:
             slicer.app.styleSheet = ""
 
-    def raiseSettings(self, unused):
+    def raiseSettings(self, _):
         self.settingsDialog.exec()
 
     def setCustomUIVisible(self, visible):

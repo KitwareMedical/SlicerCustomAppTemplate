@@ -1,0 +1,54 @@
+target-version = "py39"
+line-length = 120
+
+[lint]
+select = [
+  "B",           # flake8-bugbear
+  "C4",          # flake8-comprehensions
+  "D",           # pydocstyle
+  "E", "F", "W", # flake8
+  "EXE",         # flake8-executable
+  "G",           # flake8-logging-format
+  "ICN",         # flake8-import-conventions
+  "ISC",         # flake8-implicit-str-concat
+  "NPY",         # NumPy specific rules
+  "PGH",         # pygrep-hooks
+  "PIE",         # flake8-pie
+  "PL",          # pylint
+  "PT",          # flake8-pytest-style
+  "RET",         # flake8-return
+  "RUF",         # Ruff-specific
+  "S",           # flake8-bandit
+  "SIM",         # flake8-simplify
+  "UP",          # pyupgrade
+  "YTT",         # flake8-2020
+  "W",           # Warning
+]
+extend-ignore = [
+  "ANN101",  # missing-type-self
+  "G004",    # logging-f-string
+  "PIE790",  # unnecessary-pass
+
+  "D10",     # undocumented-public-*
+  "D200",    # One-line docstring should fit on one line
+  "D205",    # 1 blank line required between summary line and description
+  "D400",    # First line should end with a period
+  "D401",    # First line of docstring should be in imperative mood
+
+  # Disable linting rules conflicting with "ruff formatter"
+  # See https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+  "COM812",
+  "COM819",
+  "D206",
+  "D300",
+  "E111",
+  "E114",
+  "E117",
+  "ISC001",
+  "ISC002",
+  "Q000",
+  "Q002",
+  "Q003",
+  "W191",
+]
+pydocstyle.convention = "pep257"

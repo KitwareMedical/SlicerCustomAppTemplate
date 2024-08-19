@@ -11,7 +11,7 @@ from slicer.util import VTKObservationMixin
 import SlicerCustomAppUtilities
 
 # Import to ensure the files are available through the Qt resource system
-from Resources import HomeResources
+from Resources import HomeResources  # noqa: F401
 
 
 class Home(ScriptedLoadableModule):
@@ -93,7 +93,6 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         slicer.util.setToolbarsVisible(visible, keepToolbars)
 
     def modifyWindowUI(self):
-
         # Custom toolbar
         mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), "MainToolBar")
         self.CustomToolBar = qt.QToolBar("CustomToolBar")
@@ -142,7 +141,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
         pass
 
     def setup3DView(self):
-        layoutManager = slicer.app.layoutManager()
+        layoutManager = slicer.app.layoutManager()  # noqa: F841
         # layoutManager.setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutOneUp3DView)
         # controller = slicer.app.layoutManager().threeDWidget(0).threeDController()
         # controller.setBlackBackground()
@@ -157,7 +156,7 @@ class HomeLogic(ScriptedLoadableModuleLogic):
             self.setupSliceViewer(sliceWidget)
 
     def setupSliceViewer(self, sliceWidget):
-        controller = sliceWidget.sliceController()
+        controller = sliceWidget.sliceController()  # noqa: F841
         # controller.setStyleSheet("background-color: #000000")
         # controller.sliceViewLabel = ""
         # slicer.util.findChild(sliceWidget, "PinButton").visible = False

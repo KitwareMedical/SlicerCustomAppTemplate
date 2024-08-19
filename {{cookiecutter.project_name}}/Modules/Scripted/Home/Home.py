@@ -1,14 +1,12 @@
 import qt
-
 import slicer
+import SlicerCustomAppUtilities
 from slicer.ScriptedLoadableModule import (
     ScriptedLoadableModule,
     ScriptedLoadableModuleLogic,
     ScriptedLoadableModuleWidget,
 )
 from slicer.util import VTKObservationMixin
-
-import SlicerCustomAppUtilities
 
 # Import to ensure the files are available through the Qt resource system
 from Resources import HomeResources  # noqa: F401

@@ -1,5 +1,4 @@
-{{cookiecutter.project_name}} by {{cookiecutter.org_name}}
-================================
+# {{cookiecutter.project_name}} by {{cookiecutter.org_name}}
 
 {{cookiecutter.app_description_summary}}
 
@@ -7,18 +6,16 @@ _This project is in active development and may change from version to version wi
 
 ## Table of contents
 
-* [Features](#features)
-* [Development](#development)
+- [Features](#features)
+- [Development](#development)
 
 ## Features
 
 _List key features_
 
-
 ## Development
 
-* [Contributing](CONTRIBUTING.md)
-* [Building](BUILD.md)
-
+- [Contributing](CONTRIBUTING.md)
+- [Building](BUILD.md)
 
 ![{{cookiecutter.project_name}} by {{cookiecutter.org_name}}](Applications/{{cookiecutter.app_name}}App/Resources/Images/LogoFull.png?raw=true)

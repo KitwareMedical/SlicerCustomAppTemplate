@@ -1,23 +1,21 @@
-Contributing to {{cookiecutter.project_name}}
-===============================
+# Contributing to {{cookiecutter.project_name}}
 
 There are many ways to contribute to {{cookiecutter.project_name}}.
 
-  * Submit a feature request or bug, or add to the discussion on the [{{cookiecutter.project_name}} issue tracker][is]
-  * Submit a [Pull Request][pr] to improve {{cookiecutter.project_name}}.
+- Submit a feature request or bug, or add to the discussion on the [{{cookiecutter.project_name}} issue tracker][is]
+- Submit a [Pull Request][pr] to improve {{cookiecutter.project_name}}.
 
-The PR Process, and Related Gotchas
------------------------------------
+## The PR Process, and Related Gotchas
 
-#### How to submit a PR ?
+### How to submit a PR ?
 
 If you are new to {{cookiecutter.project_name}} development and you don't have push access to the {{cookiecutter.project_name}}
 repository, here are the steps:
 
 1. [Fork and clone][fk] the repository.
-3. Create a branch.
-4. [Push][push] the branch to your GitHub fork.
-5. Create a [Pull Request][pr].
+2. Create a branch.
+3. [Push][push] the branch to your GitHub fork.
+4. Create a [Pull Request][pr].
 
 This corresponds to the `Fork & Pull Model` described in the [GitHub documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models)
 guides.
@@ -37,17 +35,17 @@ comments posted by the reviewers, you may have to revisit your patches.
 Getting your contributions integrated is relatively straightforward, here
 is the checklist:
 
-* All tests pass
-* Consensus is reached. This usually means that at least one reviewer added a `LGTM` comment
-and a reasonable amount of time passed without anyone objecting. `LGTM` is an
-acronym for _Looks Good to Me_.
+- All tests pass
+- Consensus is reached. This usually means that at least one reviewer added a `LGTM` comment
+  and a reasonable amount of time passed without anyone objecting. `LGTM` is an
+  acronym for _Looks Good to Me_.
 
 Next, there are two scenarios:
-* You do NOT have push access: A {{cookiecutter.project_name}} core developer will integrate your PR.
-* You have push access: Simply click on the "Merge pull request" button.
+
+- You do NOT have push access: A {{cookiecutter.project_name}} core developer will integrate your PR.
+- You have push access: Simply click on the "Merge pull request" button.
 
 Then, click on the "Delete branch" button that appears afterward.
-
 
 [fk]: http://help.github.com/forking/
 [push]: https://help.github.com/articles/pushing-to-a-remote/

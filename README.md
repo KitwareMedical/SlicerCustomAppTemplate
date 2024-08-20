@@ -35,21 +35,19 @@ This will mark the version of the template file used and the Slicer version in t
 
 ### Which version of Slicer do the generated application build against ?
 
-Leveraging the ``jinja2-github`` plugin, the ``cookiecutter`` template generator will retrieve the latest commit associated with the Slicer repository default branch and it will set it as ``GIT_TAG`` value in the generated ``CMakeLists.txt``.
-
-
+Leveraging the `jinja2-github` plugin, the `cookiecutter` template generator will retrieve the latest commit associated with the Slicer repository default branch and it will set it as `GIT_TAG` value in the generated `CMakeLists.txt`.
 
 ## License
 
 This project template is distributed under the Apache 2.0 license. Please see
-the *LICENSE* file for details.
+the _LICENSE_ file for details.
 
 ## Authors
 
-* Julien Finet
-* Jean-Christophe Fillion-Robin
-* Dženan Zukić
-* Johan Andruejol
-* Alexis Girault
-* Cory Quammen
-* Jamie Snape
+- Julien Finet
+- Jean-Christophe Fillion-Robin
+- Dženan Zukić
+- Johan Andruejol
+- Alexis Girault
+- Cory Quammen
+- Jamie Snape

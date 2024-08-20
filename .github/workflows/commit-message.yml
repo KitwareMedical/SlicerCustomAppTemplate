@@ -12,7 +12,8 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   check-commit-message:
-    uses: Slicer/Slicer/.github/workflows/commit-message.yml@80a7735c1a419a31ec3131815efe77ad9e0a89f0 # main
+    uses: Slicer/Slicer/.github/workflows/commit-message.yml@f2b79dcfcbf628695607cfa68789d1c0143de2c0 # main

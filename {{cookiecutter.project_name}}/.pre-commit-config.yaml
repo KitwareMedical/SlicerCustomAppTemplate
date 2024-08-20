@@ -36,7 +36,7 @@ repos:
     rev: "v3.3.3"
     hooks:
       - id: prettier
-        types_or: [yaml, json]
+        types_or: [yaml, markdown, html, css, scss, javascript, json]
 
   - repo: https://github.com/codespell-project/codespell
     rev: "v2.3.0"

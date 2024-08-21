@@ -74,17 +74,18 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         pass
 
     def setSlicerUIVisible(self, visible: bool):
+        exemptToolbars = [
+            "MainToolBar",
+            "ViewToolBar",
+            "CustomToolBar",
+        ]
         slicer.util.setDataProbeVisible(visible)
-        slicer.util.setMenuBarsVisible(visible, ignore=["MainToolBar", "ViewToolBar"])
+        slicer.util.setMenuBarsVisible(visible, ignore=exemptToolbars)
         slicer.util.setModuleHelpSectionVisible(visible)
         slicer.util.setModulePanelTitleVisible(visible)
         slicer.util.setPythonConsoleVisible(visible)
         slicer.util.setApplicationLogoVisible(visible)
-        keepToolbars = [
-            slicer.util.findChild(slicer.util.mainWindow(), "MainToolBar"),
-            slicer.util.findChild(slicer.util.mainWindow(), "ViewToolBar"),
-            slicer.util.findChild(slicer.util.mainWindow(), "CustomToolBar"),
-        ]
+        keepToolbars = [slicer.util.findChild(slicer.util.mainWindow(), toolbarName) for toolbarName in exemptToolbars]
         slicer.util.setToolbarsVisible(visible, keepToolbars)
 
     def modifyWindowUI(self):

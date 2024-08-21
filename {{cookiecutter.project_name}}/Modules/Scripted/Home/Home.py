@@ -53,26 +53,21 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.layout.addWidget(self.uiWidget)
         self.ui = slicer.util.childWidgetVariables(self.uiWidget)
 
-        # Remove unneeded UI elements
-        self.modifyWindowUI()
+        # Get references to relevant underlying modules
+        # NA
 
         # Create logic class
         self.logic = HomeLogic()
 
-        # Setup scene defaults
-        self.setupNodes()
-
         # Dark palette does not propagate on its own?
         self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())
 
+        # Remove unneeded UI elements
+        self.modifyWindowUI()
         self.setCustomUIVisible(True)
 
         # Apply style
         self.applyApplicationStyle()
-
-    def setupNodes(self):
-        self.logic.setup3DView()
-        self.logic.setupSliceViewers()
 
     def cleanup(self):
         """Called when the application closes and the module widget is destroyed."""
@@ -122,6 +117,29 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     def applyApplicationStyle(self):
         SlicerCustomAppUtilities.applyStyle([slicer.app], self.resourcePath("Home.qss"))
+        self.styleThreeDWidget()
+        self.styleSliceWidgets()
+
+    def styleThreeDWidget(self):
+        viewNode = slicer.app.layoutManager().threeDWidget(0).mrmlViewNode()  # noqa: F841
+        # viewNode.SetBackgroundColor(0.0, 0.0, 0.0)
+        # viewNode.SetBackgroundColor2(0.0, 0.0, 0.0)
+        # viewNode.SetBoxVisible(False)
+        # viewNode.SetAxisLabelsVisible(False)
+        # viewNode.SetOrientationMarkerType(slicer.vtkMRMLViewNode.OrientationMarkerTypeAxes)
+
+    def styleSliceWidgets(self):
+        for name in slicer.app.layoutManager().sliceViewNames():
+            sliceWidget = slicer.app.layoutManager().sliceWidget(name)
+            self.styleSliceWidget(sliceWidget)
+
+    def styleSliceWidget(self, sliceWidget: slicer.qMRMLSliceWidget):
+        controller = sliceWidget.sliceController()  # noqa: F841
+        # controller.sliceViewLabel = ""
+        # slicer.util.findChild(sliceWidget, "PinButton").visible = False
+        # slicer.util.findChild(sliceWidget, "ViewLabel").visible = False
+        # slicer.util.findChild(sliceWidget, "FitToWindowToolButton").visible = False
+        # slicer.util.findChild(sliceWidget, "SliceOffsetSlider").spinBoxVisible = False
 
 
 class HomeLogic(ScriptedLoadableModuleLogic):
@@ -139,27 +157,3 @@ class HomeLogic(ScriptedLoadableModuleLogic):
         Run the actual algorithm
         """
         pass
-
-    def setup3DView(self):
-        layoutManager = slicer.app.layoutManager()  # noqa: F841
-        # layoutManager.setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutOneUp3DView)
-        # controller = slicer.app.layoutManager().threeDWidget(0).threeDController()
-        # controller.setBlackBackground()
-        # controller.set3DAxisVisible(False)
-        # controller.set3DAxisLabelVisible(False)
-        # controller.setOrientationMarkerType(3)  # Axis marker
-        # controller.setStyleSheet("background-color: #000000")
-
-    def setupSliceViewers(self):
-        for name in slicer.app.layoutManager().sliceViewNames():
-            sliceWidget = slicer.app.layoutManager().sliceWidget(name)
-            self.setupSliceViewer(sliceWidget)
-
-    def setupSliceViewer(self, sliceWidget: slicer.qMRMLSliceWidget):
-        controller = sliceWidget.sliceController()  # noqa: F841
-        # controller.setStyleSheet("background-color: #000000")
-        # controller.sliceViewLabel = ""
-        # slicer.util.findChild(sliceWidget, "PinButton").visible = False
-        # slicer.util.findChild(sliceWidget, "ViewLabel").visible = False
-        # slicer.util.findChild(sliceWidget, "FitToWindowToolButton").visible = False
-        # slicer.util.findChild(sliceWidget, "SliceOffsetSlider").spinBoxVisible = False

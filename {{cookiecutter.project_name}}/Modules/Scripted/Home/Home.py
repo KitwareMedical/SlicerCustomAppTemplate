@@ -46,6 +46,8 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     _toolbars: Mapping[str, qt.QToolBar] = {}
 
+    _slicerDefaultPalette: Optional[qt.QPalette] = None
+
     def __init__(self, parent: Optional[qt.QWidget]):
         """Called when the application opens the module the first time and the widget is initialized."""
         ScriptedLoadableModuleWidget.__init__(self, parent)
@@ -69,6 +71,8 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         # Dark palette does not propagate on its own
         # See https://github.com/KitwareMedical/SlicerCustomAppTemplate/issues/72
         self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())
+
+        self._slicerDefaultPalette = slicer.app.palette()
 
         # Remove unneeded UI elements
         self.modifyWindowUI()
@@ -134,7 +138,10 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         if visible:
             self.applyApplicationStyle()
         else:
+            # Modern Qt controls use Qt Stylesheets (.qss) to control dynamic styling
             slicer.app.styleSheet = ""
+            # Legacy Qt-derived controls (see CTK controls) use Qt palettes for styling
+            slicer.app.setPalette(self._slicerDefaultPalette)
 
     def raiseSettings(self, _):
         self.settingsDialog.exec()
@@ -144,8 +151,19 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     def applyApplicationStyle(self):
         SlicerCustomAppUtilities.applyStyle([slicer.app], self.resourcePath("Home.qss"))
+        self.applyApplicationPalette()
         self.styleThreeDWidget()
         self.styleSliceWidgets()
+
+    def applyApplicationPalette(self):
+        """Apply custom palette colors to the application as a workaround for restyling
+        custom CTK and qMRML controls that do not yet respect Qt stylesheets.
+        """
+        highlightColor = qt.QColor("#009D49")  # Kitware - Green
+
+        p = self._slicerDefaultPalette
+        p.setColor(qt.QPalette.Highlight, highlightColor)
+        slicer.app.setPalette(p)
 
     def styleThreeDWidget(self):
         viewNode = slicer.app.layoutManager().threeDWidget(0).mrmlViewNode()  # noqa: F841

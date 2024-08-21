@@ -66,7 +66,8 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         # Create logic class
         self.logic = HomeLogic()
 
-        # Dark palette does not propagate on its own?
+        # Dark palette does not propagate on its own
+        # See https://github.com/KitwareMedical/SlicerCustomAppTemplate/issues/72
         self.uiWidget.setPalette(slicer.util.mainWindow().style().standardPalette())
 
         # Remove unneeded UI elements

@@ -143,17 +143,8 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
 
 class HomeLogic(ScriptedLoadableModuleLogic):
-    """This class should implement all the actual
-    computation done by your module.  The interface
-    should be such that other python code can import
-    this class and make use of the functionality without
-    requiring an instance of the Widget.
-    Uses ScriptedLoadableModuleLogic base class, available at:
-    https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
+    """
+    Implements underlying logic for the Home module.
     """
 
-    def run(self, inputVolume, outputVolume, imageThreshold, enableScreenshots=0):  # noqa: ANN001
-        """
-        Run the actual algorithm
-        """
-        pass
+    pass

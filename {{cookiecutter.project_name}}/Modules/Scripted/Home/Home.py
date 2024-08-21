@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Optional
 
 import qt
@@ -39,6 +40,12 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
     """
 
+    @property
+    def toolbarNames(self) -> list[str]:
+        return [str(k) for k in self._toolbars]
+
+    _toolbars: Mapping[str, qt.QToolBar] = {}
+
     def __init__(self, parent: Optional[qt.QWidget]):
         """Called when the application opens the module the first time and the widget is initialized."""
         ScriptedLoadableModuleWidget.__init__(self, parent)
@@ -77,7 +84,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         exemptToolbars = [
             "MainToolBar",
             "ViewToolBar",
-            "CustomToolBar",
+            *self.toolbarNames,
         ]
         slicer.util.setDataProbeVisible(visible)
         slicer.util.setMenuBarsVisible(visible, ignore=exemptToolbars)
@@ -89,15 +96,33 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         slicer.util.setToolbarsVisible(visible, keepToolbars)
 
     def modifyWindowUI(self):
-        # Custom toolbar
-        mainToolBar = slicer.util.findChild(slicer.util.mainWindow(), "MainToolBar")
-        self.CustomToolBar = qt.QToolBar("CustomToolBar")
-        self.CustomToolBar.name = "CustomToolBar"
-        slicer.util.mainWindow().insertToolBar(mainToolBar, self.CustomToolBar)
+        """Customize the entire user interface to resemble the custom application"""
+        # Custom toolbars
+        self.initializeSettingsToolBar()
+
+    def insertToolBar(self, beforeToolBarName: str, name: str, title: Optional[str] = None) -> qt.QToolBar:
+        """Helper method to insert a new toolbar between existing ones"""
+        beforeToolBar = slicer.util.findChild(slicer.util.mainWindow(), beforeToolBarName)
+
+        if title is None:
+            title = name
+
+        toolBar = qt.QToolBar(title)
+        toolBar.name = name
+        slicer.util.mainWindow().insertToolBar(beforeToolBar, toolBar)
+
+        self._toolbars[name] = toolBar
+
+        return toolBar
+
+    def initializeSettingsToolBar(self):
+        """Create toolbar and dialog for app settings"""
+        settingsToolBar = self.insertToolBar("MainToolBar", "SettingsToolBar", title="Settings")
+
+        gearIcon = qt.QIcon(self.resourcePath("Icons/Gears.png"))
+        self.settingsAction = settingsToolBar.addAction(gearIcon, "")
 
         # Settings dialog
-        gearIcon = qt.QIcon(self.resourcePath("Icons/Gears.png"))
-        self.settingsAction = self.CustomToolBar.addAction(gearIcon, "")
         self.settingsDialog = slicer.util.loadUI(self.resourcePath("UI/Settings.ui"))
         self.settingsUI = slicer.util.childWidgetVariables(self.settingsDialog)
         self.settingsUI.CustomUICheckBox.toggled.connect(self.setCustomUIVisible)

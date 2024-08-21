@@ -69,3 +69,8 @@ isort.known-first-party = [
   "Resources",
 ]
 pydocstyle.convention = "pep257"
+
+[lint.per-file-ignores]
+# Disable "RUF012: Mutable class attributes should be annotated"
+# to allow convenient declaration of instance variables in the HomeWidget class.
+"Modules/Scripted/Home/Home.py" = ["RUF012"]

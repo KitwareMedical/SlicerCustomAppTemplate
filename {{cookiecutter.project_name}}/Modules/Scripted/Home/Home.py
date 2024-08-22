@@ -1,4 +1,3 @@
-from collections.abc import Mapping
 from typing import Optional
 
 import qt
@@ -44,7 +43,7 @@ class HomeWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     def toolbarNames(self) -> list[str]:
         return [str(k) for k in self._toolbars]
 
-    _toolbars: Mapping[str, qt.QToolBar] = {}
+    _toolbars: dict[str, qt.QToolBar] = {}
 
     def __init__(self, parent: Optional[qt.QWidget]):
         """Called when the application opens the module the first time and the widget is initialized."""

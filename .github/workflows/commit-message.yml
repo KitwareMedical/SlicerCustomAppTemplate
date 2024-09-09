@@ -16,4 +16,9 @@ permissions:
 
 jobs:
   check-commit-message:
-    uses: Slicer/Slicer/.github/workflows/commit-message.yml@418027bc07ce0aff12fe97c0e769062cc090a961 # main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Commit Message
+        uses: Slicer/slicer-check-commit-message-action@26db1d4a0580194025a00bff6f5c24a88c0efb9f # v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

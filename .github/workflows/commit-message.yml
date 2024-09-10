@@ -16,4 +16,4 @@ permissions:
 
 jobs:
   check-commit-message:
-    uses: Slicer/Slicer/.github/workflows/commit-message.yml@418027bc07ce0aff12fe97c0e769062cc090a961 # main
+    uses: Slicer/Slicer/.github/workflows/commit-message.yml@c28ce0c16593fd6c494ceef4f65e3e4ee2d4d65c # main

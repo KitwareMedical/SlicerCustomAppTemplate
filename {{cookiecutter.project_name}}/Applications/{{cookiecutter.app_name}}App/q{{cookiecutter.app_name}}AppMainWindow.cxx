@@ -62,7 +62,7 @@ void q{{cookiecutter.app_name}}AppMainWindowPrivate::setupUi(QMainWindow * mainW
   //----------------------------------------------------------------------------
   QAction* helpAboutSlicerAppAction = new QAction(mainWindow);
   helpAboutSlicerAppAction->setObjectName("HelpAbout{{cookiecutter.app_name}}AppAction");
-  helpAboutSlicerAppAction->setText("About " + app->applicationName());
+  helpAboutSlicerAppAction->setText(q{{cookiecutter.app_name}}AppMainWindow::tr("About %1").arg(qSlicerApplication::application()->mainApplicationDisplayName()));
 
   //----------------------------------------------------------------------------
   // Calling "setupUi()" after adding the actions above allows the call

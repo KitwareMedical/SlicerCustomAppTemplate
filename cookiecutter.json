@@ -5,6 +5,7 @@
   "org_domain": "kitware.com",
   "org_name": "Kitware, Inc.",
   "app_name": "{{ cookiecutter.project_name }}",
+  "app_display_name": "{{ cookiecutter.app_name }}",
   "bundle_identifier": "{{ cookiecutter.org_domain.split('.') | reverse | join('.') }}.{{ cookiecutter.project_name | lower }}",
   "app_version_major": "0",
   "app_version_minor": "1",

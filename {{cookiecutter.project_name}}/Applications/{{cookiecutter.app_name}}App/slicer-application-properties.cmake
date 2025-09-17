@@ -2,6 +2,9 @@
 set(APPLICATION_NAME
   {{cookiecutter.app_name}}
   )
+set(APPLICATION_DISPLAY_NAME
+  "{{cookiecutter.app_display_name}}"
+  )
 
 set(VERSION_MAJOR
   {{cookiecutter.app_version_major}}

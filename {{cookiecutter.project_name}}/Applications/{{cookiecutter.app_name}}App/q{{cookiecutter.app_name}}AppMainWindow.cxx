@@ -28,6 +28,7 @@
 #include "qSlicerAboutDialog.h"
 #include "qSlicerMainWindow_p.h"
 #include "qSlicerModuleSelectorToolBar.h"
+#include "qMRMLWidget.h"
 
 //-----------------------------------------------------------------------------
 // q{{cookiecutter.app_name}}AppMainWindowPrivate methods

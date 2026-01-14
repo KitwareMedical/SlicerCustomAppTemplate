@@ -124,7 +124,6 @@ set(Slicer_CLIMODULES_DISABLED
 set(Slicer_QTLOADABLEMODULES_DISABLED
   SceneViews
   SlicerWelcome
-  ViewControllers
   )
 set(Slicer_QTSCRIPTEDMODULES_DISABLED
   DataProbe

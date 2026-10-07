@@ -56,7 +56,7 @@ cmake --build . --config Release -- /maxcpucount:4
 
 ## Package
 
-Install [NSIS 2](http://sourceforge.net/projects/nsis/files/)
+Install [NSIS 3](https://nsis.sourceforge.io/Download) (version 3.03 or newer), including the language packs.
 
 <b>Option 1: CMake and Visual Studio</b>
 
